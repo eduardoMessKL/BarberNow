@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom"
-import { Login } from "../pages/Login"
-import { Register } from "../pages/Register"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Login } from "../pages/Login/Login"
+import { Cadastro} from "../pages/Cadastro/Cadastro"
 
 
 export function AppRoutes(){
@@ -8,7 +8,7 @@ export function AppRoutes(){
         <BrowserRouter>
             <Routes> 
                 <Route path = "/" element = {<Login/>}/>
-                <Route path = "/register" element = {<Register/>}/>
+                <Route path = "/cadastro" element = {<Cadastro/>}/>
             </Routes>
         
         </BrowserRouter>
