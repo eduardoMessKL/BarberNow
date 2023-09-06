@@ -1,6 +1,6 @@
 # BarberNow - Plataforma de Busca de Barbearias
 
-![BarberNow Logo]([link_para_a_imagem_do_logo.png](https://i.imgur.com/7B8oKMs.png))
+![BarberNow Logo](https://i.imgur.com/7B8oKMs.png)
 
 ## Resumo
 
@@ -24,7 +24,10 @@ O BarberNow é uma plataforma online desenvolvida para oferecer praticidade e co
 Para obter mais informações sobre o BarberNow, entre em contato conosco:
 
 Email: babernow2023@gmail.com
+
 GitHub: github.com/eduardoMessKL
+
+Desenvolvedores: Eduardo Messias Kulka, Gabriel Petranhski Caldas, Gabriel Francisco Dib Domingues Silva e Israel Henrique Ferreira.
 
 Obrigado por escolher o BarberNow!
 
