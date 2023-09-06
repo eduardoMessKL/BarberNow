@@ -1,6 +1,6 @@
 # BarberNow - Plataforma de Busca de Barbearias
 
-![BarberNow Logo](https://i.imgur.com/7B8oKMs.png)
+![BarberNow Logo](https://i.imgur.com/7B8oKMsm.png)
 
 ## Resumo
 
