@@ -37,7 +37,16 @@ export function Login() {
     return <p>carregando...</p>;
   }
   if (user) {
-    return console.log(user);
+    return(
+      <div>
+      <LoginHTML
+        setEmail={setEmail}
+        setPassword={setPassword}
+        handleSignIn={handleSignIn <Link to="/cadastro">Crie a sua conta aqui</Link>}
+        RegisterLink={() => <Link to="/cadastro">Crie a sua conta aqui</Link>}
+      />
+    </div>
+    );
   }
   return (
     <div>
