@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, .html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container-cadastro{
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../../assets/Background/BG-LOGIN.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-cadastro{
+    height: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.headerL-cadastro{
+    align-items: center;
+    display: flex;
+    margin-left: 3%;
+}
+
+.headerR-cadastro{
+    margin-right: 3%;
+}
+
+.logotxt-header-cadastro{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 10%;
+    color: aliceblue;
+    letter-spacing: 1px;
+    font-size: 2.5em;
+}
+
+.imglogo-header-cadastro{
+    height: 5.7rem;
+    margin: 0;
+}
+
+.botao-header-cadastro{
+    width: 12rem;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 0.06rem;
+    background: #F5BD1F;
+    box-shadow: 0px 0px 4px 0px #F5BD1F;
+    border-radius: 0.3rem;
+    border-style: none;
+}
+
+.botao-link-cadastro{
+    text-decoration: none;
+    color: black;
+}
+
+.div-inf-cadastro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-cadastro-cadastro{
+    height: 84vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    background: linear-gradient(180deg, rgba(255, 254, 252, 0.35) 0.02%, rgba(251, 251, 251, 0.35) 128.22%), linear-gradient(181deg, rgba(255, 255, 255, 0.65) -39.57%, rgba(255, 255, 255, 0.00) 99.45%);
+    box-shadow: 0px 4px 51px 0px rgba(0, 0, 0, 0.25) inset;
+    filter: blur(0px);
+    backdrop-filter: blur(26px);
+}
+
+.card-cadastro-arrow{
+    height: 100%;
+    margin-top: 3%;
+    margin-left: 2%;
+}
+
+.botao-arrow-cadastro{
+    background-color: transparent;
+    border-style: none;
+}
+
+.arrow-cadastro{
+    height: 3%;
+    width: 1.5vw;
+}
+
+.cadastroL-cadastro, .cadastroR-cadastro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.cadastroL-cadastro, img{
+    height: 60%;
+    margin-bottom: 3%;
+}
+
+.txt-logotipo-cadastro{
+    margin-bottom: 1%;
+    font-size: 1.3rem;
+}
+
+.div-password-cadastro{
+    display: flex;
+}
+
+.input-cadastro{
+    font-size: 1.3rem;
+    border-color: black;
+    background-color: transparent;
+    border-top: 1rem;
+    border-right: 1rem;
+    border-left: 1rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.div-input-cadastro, .input-password-cadastro{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    width: 80%;
+}
+
+.label-cadastro{
+    margin-bottom: 0.2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.botao-cadastrar-cadastro{
+    font-size: 0.7em;
+    margin-top: 2em;
+    box-sizing: border-box;
+    border-style: none;
+    width: 20rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: 0.25rem;
+    background: #F5BD1F;
+    box-shadow: 0px 0px 10px 0px rgba(245, 189, 31, 0.55);
+}

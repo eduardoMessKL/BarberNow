@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import arrowImg from "../../assets/arrow.svg";
-import logoImg from "../../assets/logo.svg";
-import "./styles.css";
+import "./Login.css";
 import { auth } from "../../services/firebaseConfig";
 import LoginHTML from "./LoginHTML";
 
@@ -20,7 +18,7 @@ export function Login() {
   }
   if (error) {
     return (
-      <div>
+      <div className="flamengo">
         <LoginHTML
           setEmail={setEmail}
           setPassword={setPassword}
@@ -40,7 +38,7 @@ export function Login() {
     return console.log(user);
   }
   return (
-    <div>
+    <div className="html-login">
       <LoginHTML
         setEmail={setEmail}
         setPassword={setPassword}

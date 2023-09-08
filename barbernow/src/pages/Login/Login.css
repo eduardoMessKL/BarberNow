@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700;1,900&display=swap');
+
+.body, .html{
+    height: 100vh;
+    width: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    height: 100vh;
+    width: 100wh;
+    background-image: url(../../assets/Background/BG-LOGIN.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+}
+
+header{
+    height: 13vh;
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.headerL{
+    align-items: center;
+    display: flex;
+    margin-left: 3rem;
+}
+
+.headerR{
+    margin-right: 3rem;
+}
+
+.logotxt-header{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 3rem;
+    color: aliceblue;
+    letter-spacing: 1px;
+    font-size: 5.5vh;
+}
+
+.imglogo-header{
+    height: 5rem;
+}
+
+.botao-header{
+    padding: 1vw;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    letter-spacing: 0.06rem;
+    background: #F5BD1F;
+    box-shadow: 0px 0px 4px 0px #F5BD1F;
+    border-radius: 0.3rem;
+    border-style: none;
+}
+
+.botao-link{
+    width: 15rem;
+    text-decoration: none;
+    color: black;
+}
+
+.div-inf{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 87vh;
+    width: 100vw;
+}
+
+.imglogo-card{
+    height: 28vh;
+    width: 14vw;
+}
+
+.card-login{
+    height: 85vh;
+    width: 32vw;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: top;
+    flex-direction: column;
+    border-radius: 0.625rem;
+    background: linear-gradient(180deg, rgba(255, 254, 252, 0.35) 0.02%, rgba(251, 251, 251, 0.35) 128.22%), linear-gradient(181deg, rgba(255, 255, 255, 0.65) -39.57%, rgba(255, 255, 255, 0.00) 99.45%);
+    box-shadow: 0px 4px 51px 0px rgba(0, 0, 0, 0.25) inset;
+    filter: blur(0px);
+    backdrop-filter: blur(26px);
+}
+
+.card-login-arrow{
+    width: 100%;
+    display: flex;
+    justify-items: start;
+}
+
+.botao-arrow{
+    margin-left: 1vw;
+    margin-top: 2.5vh;
+    background-color: transparent;
+    border-style: none;
+}   
+
+.arrow{
+    height: 3vh;
+    width: 1.5vw;
+}
+
+.card-login, h1, span{
+    margin-bottom: 1.5vh;
+}
+
+.txt-login{
+    font-size: 2.7rem;
+}
+
+.txt-loginDescricao{
+    font-size: 1.2rem;
+}
+
+.card-login, .input-email, .input-senha{
+    margin-bottom: 1vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.botao-entrar{
+    color: #261F2C;
+    font-family: 'Poppins', sans-serif;
+    border-style: none;
+    letter-spacing: 0.1rem;
+    font-size: 3vh;
+    height: 7vh;
+    width: 35vh;
+    margin-top: 3vh;
+    margin-bottom: 1.5vh;
+    border-radius: 0.3rem;
+    background: #EFBE35;
+    text-shadow: 0px 4px 19px rgba(119, 64, 163, 0.60);
+    font-weight: bold;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.input-email, .input-senha{
+    width: 70%;
+}
+
+.input{
+    font-size: 1.5rem;
+    border-color: black;
+    background-color: transparent;
+    border-top: 1rem;
+    border-right: 1rem;
+    border-left: 1rem;
+}

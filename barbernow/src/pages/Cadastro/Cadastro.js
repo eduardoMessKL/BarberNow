@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import arrowImg from "../../assets/arrow.svg";
-import logoImg from "../../assets/logo.svg";
 import { auth } from "../../services/firebaseConfig";
-import "./styles.css";
+import "./Cadastro.css";
 import CadastroHTML from "./CadastroHTML"
 
 export function Cadastro() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   function handleSignOut(e) {
