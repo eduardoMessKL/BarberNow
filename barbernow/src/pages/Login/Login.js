@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import arrowImg from "../../assets/arrow.svg";
 import logoImg from "../../assets/logo.svg";
 import "./styles.css";
-import { auth } from "../../services/firebaseConfig";
+import { auth } from "../../firebase/firebaseConfig";
 import LoginHTML from "./LoginHTML";
 
 export function Login() {
