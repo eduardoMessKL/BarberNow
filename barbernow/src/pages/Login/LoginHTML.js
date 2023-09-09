@@ -1,6 +1,7 @@
 import React from "react";
 import arrowImg from "../../assets/arrow.svg";
 import logoImg from "../../assets/logo.svg";
+import { Link } from "react-router-dom";
 
 function LoginHTML(props) {
   return (
@@ -36,12 +37,11 @@ function LoginHTML(props) {
       <a href="#">Esqueceu sua senha ?</a>
 
       <button className="button" onClick={props.handleSignIn}>
-        Entrar <img src={arrowImg} alt="->" />
+      <Link to="/perfil"></Link> Entrar <img src={arrowImg} alt="->" />
       </button>
       <div className="footer">
         <p>Você não tem uma conta?</p>
         {props.RegisterLink()}
-        {/*<Link to="/register">Crie a sua conta aqui</Link>*/}
       </div>
     </form>
   </div>
