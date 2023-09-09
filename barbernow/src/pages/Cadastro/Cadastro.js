@@ -6,11 +6,11 @@ import "./styles.css";
 import CadastroHTML from "./CadastroHTML";
 //importando as funções do meu arquivo firestoreService (banco de dados do Firebase)
 import {
-  addBarbeariaToFirestore,
   checkIfCnpjExists,
   checkIfEmailExists,
-  uploadImageAndGetURL,
+  //uploadImageAndGetURL,
 } from "../../model/services/firestoreService";
+import { createBarbearia } from "../../model/services/BarbeariaService";
 
 export function Cadastro() {
   // Estados para os novos campos
@@ -22,7 +22,7 @@ export function Cadastro() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [repetirSenha, setRepetirSenha] = useState("");
-  const [image, setImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
 
   //sem usar por enquanto
   //const [setLoading] = useState(false);
@@ -49,22 +49,10 @@ export function Cadastro() {
       return;
     }
 
-    //função para adicionar imagem no Storage(recurso do firebase para adicionar imagens dos usuários)
-    let fotoURL = "";
-    if (image) {
-      try {
-        //chamo a função de enviar imagem e pegar URL dela, esta no arquivo firestoreService
-        fotoURL = await uploadImageAndGetURL(cnpj, image);
-      } catch (error) {
-        console.error("Erro ao fazer upload da imagem:", error);
-        return;
-      }
-    }
-
     //uma simples condição para criar o usuário (devemos colocar mais)
     if (senha === repetirSenha) {
       createUserWithEmailAndPassword(email, senha)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
           const user = userCredential.user; //deve ser para usar as credencias do usuario criado, mas nao é usada(gpt4...)
           const barbeariaData = {
             nome: nome,
@@ -73,10 +61,10 @@ export function Cadastro() {
             endereco: endereco,
             horario: horario,
             email: email,
-            fotoURL: fotoURL,
+            senha: senha,
           };
           //depois de criar o usuario/barbearia, adiciona no banco
-          addBarbeariaToFirestore(cnpj, barbeariaData); // CNPJ é usado como ID
+          await createBarbearia(barbeariaData, imageFile); // Passa os dados e o arquivo para a função //
         })
         .catch((error) => {
           console.error("Erro ao registrar usuário:", error);
@@ -97,7 +85,7 @@ export function Cadastro() {
           setEndereco={setEndereco}
           setHorario={setHorario}
           setRepetirSenha={setRepetirSenha}
-          setImageFile={setImage}
+          setImageFile={setImageFile}
           handleSignUp={handleSignUp}
           SignInLink={() => <Link to="/">Acesse sua conta aqui</Link>}
         />
@@ -128,7 +116,7 @@ export function Cadastro() {
       setEndereco={setEndereco}
       setHorario={setHorario}
       setRepetirSenha={setRepetirSenha}
-      setImageFile={setImage}
+      setImageFile={setImageFile}
       handleSignUp={handleSignUp}
       SignInLink={() => <Link to="/login">Acesse sua conta aqui</Link>}
     />

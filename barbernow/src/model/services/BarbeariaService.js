@@ -6,16 +6,39 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
-import app from "./firebase";
+import { app } from "../../firebase/firebaseConfig";
+import { uploadImageAndGetURL } from "./firestoreService";
+import { Barbearia } from "../entities/Barbearia";
 
 const db = getFirestore(app);
 
 //funções CRUD Barbearia
-export async function createBarbearia(barbearia) {
+export async function createBarbearia(barbeariaData, file) {
   try {
-    await setDoc(doc(db, "barbearias", barbearia.cnpj), barbearia);
+    const barbearia = new Barbearia(
+      barbeariaData.cnpj,
+      barbeariaData.nome,
+      barbeariaData.telefone,
+      barbeariaData.email,
+      barbeariaData.senha,
+      barbeariaData.endereco,
+      barbeariaData.horario,
+      barbeariaData.email
+    );
+    //função para adicionar imagem no Storage(recurso do firebase para adicionar imagens dos usuários)
+    if (file) {
+      try {
+        const imageURL = await uploadImageAndGetURL(barbearia.cnpj, file);
+        barbearia.fotoURL = imageURL;
+      } catch (error) {
+        console.error("Erro ao fazer upload da imagem:", error);
+        return;
+      }
+    }
+    await setDoc(doc(db, "barbearias", barbearia.cnpj), barbearia.toObject());
   } catch (e) {
     console.error("Error adding document: ", e);
+    throw e; // Rejeita a promessa para que você possa capturar esse erro mais tarde
   }
 }
 

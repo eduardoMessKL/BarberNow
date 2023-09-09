@@ -84,7 +84,7 @@ function CadastroHTML(props) {
             name="password"
             id="password"
             placeholder="********************"
-            onChange={(e) => props.setPassword(e.target.value)}
+            onChange={(e) => props.setSenha(e.target.value)}
           />
         </div>
 
