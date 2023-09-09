@@ -42,7 +42,7 @@ export function Login() {
       <LoginHTML
         setEmail={setEmail}
         setPassword={setPassword}
-        handleSignIn={handleSignIn <Link to="/cadastro">Crie a sua conta aqui</Link>}
+        handleSignIn={handleSignIn}
         RegisterLink={() => <Link to="/cadastro">Crie a sua conta aqui</Link>}
       />
     </div>

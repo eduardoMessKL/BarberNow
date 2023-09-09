@@ -1,6 +1,4 @@
 import React from "react";
-import arrowImg from "../../assets/arrow.svg";
-import logoImg from "../../assets/logo.svg";
 import logoimg from "../../assets/Logo/LogoBranca.png"
 import logoimg1 from"../../assets/Logo/Logo BarberNow.png"
 import arrow from "../../assets/Arrow Black.png"
