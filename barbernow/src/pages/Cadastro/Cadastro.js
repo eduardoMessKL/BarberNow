@@ -28,7 +28,7 @@ export function Cadastro() {
   //const [setLoading] = useState(false);
   //const [errorMessage, setErrorMessage] = useState("");
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   //função inteira para criar usuario/barbearia e adicionar seus dados no banco

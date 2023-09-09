@@ -20,7 +20,7 @@ export function Login() {
   }
   if (error) {
     return (
-      <div>
+      <div className="flamengo">
         <LoginHTML
           setEmail={setEmail}
           setPassword={setPassword}
@@ -49,7 +49,7 @@ export function Login() {
     );
   }
   return (
-    <div>
+    <div className="html-login">
       <LoginHTML
         setEmail={setEmail}
         setPassword={setPassword}

@@ -1,71 +1,30 @@
 import React from "react";
-import arrowImg from "../../assets/arrow.svg";
-import logoImg from "../../assets/logo.svg";
+import arrow from "../../assets/Arrow Black.png";
+import logoimg from "../../assets/Logo/LogoBranca.png";
+import userIcon from "../../assets/User Icon.png"
+import { Link } from "react-router-dom";
 
 function CadastroHTML(props) {
   return (
-    <div className="container">
-      <header className="header">
-        <img src={logoImg} alt="Workflow" className="logoImg" />
-        <span>Por favor digite suas informações de cadastro</span>
+    <div className="container-cadastro">
+      {/*----HEDAER----*/}
+      <header className="header-cadastro">
+        <div className="headerL-cadastro">
+          <img
+            src={logoimg}
+            className="imglogo-header-cadastro"
+            alt="logoimg-header-cadastro"
+          ></img>
+          <h1 className="logotxt-header-cadastro">BarberNow</h1>
+        </div>
+        <div className="headerR-cadastro">
+          <button className='botao-header-cadastro'>
+            <Link to="/login" className="botao-link-cadastro">LOGIN</Link>
+          </button>
+        </div>
       </header>
 
       <form>
-        <div className="inputContainer">
-          <label htmlFor="nome">Nome da Barbearia</label>
-          <input
-            type="text"
-            name="nome"
-            id="nome"
-            placeholder="Nome da sua barbearia"
-            onChange={(e) => props.setNome(e.target.value)}
-          />
-        </div>
-
-        <div className="inputContainer">
-          <label htmlFor="telefone">Telefone para Contato</label>
-          <input
-            type="text"
-            name="telefone"
-            id="telefone"
-            placeholder="(99) 99999-9999"
-            onChange={(e) => props.setTelefone(e.target.value)}
-          />
-        </div>
-
-        <div className="inputContainer">
-          <label htmlFor="cnpj">CNPJ</label>
-          <input
-            type="text"
-            name="cnpj"
-            id="cnpj"
-            placeholder="12345678901234"
-            onChange={(e) => props.setCnpj(e.target.value)}
-          />
-        </div>
-
-        <div className="inputContainer">
-          <label htmlFor="endereco">Endereço da Barbearia</label>
-          <input
-            type="text"
-            name="endereco"
-            id="endereco"
-            placeholder="Endereço da sua barbearia"
-            onChange={(e) => props.setEndereco(e.target.value)}
-          />
-        </div>
-
-        <div className="inputContainer">
-          <label htmlFor="horario">Horário de Atendimento</label>
-          <input
-            type="text"
-            name="horario"
-            id="horario"
-            placeholder="Horário de funcionamento"
-            onChange={(e) => props.setHorario(e.target.value)}
-          />
-        </div>
-
         <div className="inputContainer">
           <label htmlFor="email">E-mail</label>
           <input
@@ -84,36 +43,17 @@ function CadastroHTML(props) {
             name="password"
             id="password"
             placeholder="********************"
-            onChange={(e) => props.setSenha(e.target.value)}
+            onChange={(e) => props.setPassword(e.target.value)}
           />
         </div>
 
-        <div className="inputContainer">
-          <label htmlFor="repetirSenha">Repita a Senha</label>
-          <input
-            type="password"
-            name="repetirSenha"
-            id="repetirSenha"
-            placeholder="********************"
-            onChange={(e) => props.setRepetirSenha(e.target.value)}
-          />
-        </div>
-        <div>
-          <label> Adicione a foto de sua barbearia</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => props.setImageFile(e.target.files[0])}
-          />
-        </div>
-
-        <button onClick={props.handleSignUp} className="button">
+        <button onClick={props.handleSignOut} className="button">
           Cadastrar <img src={arrowImg} alt="->" />
         </button>
-
         <div className="footer">
           <p>Você já tem uma conta?</p>
           {props.SignInLink()}
+          {/*<Link to="/">Acesse sua conta aqui</Link>*/}
         </div>
       </form>
     </div>
