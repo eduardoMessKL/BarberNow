@@ -9,8 +9,7 @@ export const register = async ({ email, password }) => {
   return resp.user;
 };
 
-export const login = async({email, password})=>{
-    const res =  await firebase.auth()
-    .signInWithEmailAndPassword(email, password);
-    return res.user;
-}
+export const login = async ({ email, password }) => {
+  const res = await firebase.auth().signInWithEmailAndPassword(email, password);
+  return res.user;
+};
