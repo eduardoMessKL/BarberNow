@@ -24,6 +24,55 @@ body, .html{
     overflow-x: hidden;
 }
 
+header{
+    height: 13vh;
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.headerL{
+    align-items: center;
+    display: flex;
+    margin-left: 3rem;
+}
+
+.headerR{
+    margin-right: 3rem;
+}
+
+.logotxt-header{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 3rem;
+    color: aliceblue;
+    letter-spacing: 1px;
+    font-size: 5.5vh;
+}
+
+.imglogo-header{
+    height: 5rem;
+}
+
+.botao-header{
+    padding: 1vw;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    letter-spacing: 0.06rem;
+    background: #F5BD1F;
+    box-shadow: 0px 0px 4px 0px #F5BD1F;
+    border-radius: 0.3rem;
+    border-style: none;
+}
+
+.botao-link{
+    width: 15rem;
+    text-decoration: none;
+    color: black;
+}
+
 .botao-header{
     margin: 1rem;
 }

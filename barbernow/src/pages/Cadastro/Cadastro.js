@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase/firebaseConfig";
-import "./styles.css";
 import CadastroHTML from "./CadastroHTML";
+import "./Cadastro.css"
 //importando as funções do meu arquivo firestoreService (banco de dados do Firebase)
 import {
   checkIfCnpjExists,

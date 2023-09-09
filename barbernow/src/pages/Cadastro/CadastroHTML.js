@@ -24,38 +24,123 @@ function CadastroHTML(props) {
         </div>
       </header>
 
-      <form>
-        <div className="inputContainer">
-          <label htmlFor="email">E-mail</label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="johndoe@gmail.com"
-            onChange={(e) => props.setEmail(e.target.value)}
-          />
-        </div>
+      {/*----DIV INFERIOR----*/}
+      <div className="div-inf-cadastro">
+        <form className="card-cadastro-cadastro">
 
-        <div className="inputContainer">
-          <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="********************"
-            onChange={(e) => props.setPassword(e.target.value)}
-          />
-        </div>
+          {/*----ARROW----*/}
+          <div className="card-cadastro-arrow">
+            <button className="botao-arrow-cadastro">
+            <Link to="/">
+              <img src={arrow} className='arrow' alt='arrow'></img>
+            </Link>
+            </button>
+          </div>
 
-        <button onClick={props.handleSignOut} className="button">
-          Cadastrar <img src={arrowImg} alt="->" />
-        </button>
-        <div className="footer">
-          <p>Você já tem uma conta?</p>
-          {props.SignInLink()}
-          {/*<Link to="/">Acesse sua conta aqui</Link>*/}
-        </div>
-      </form>
+          {/*----CADASTRO LADO ESQUERDO----*/}
+          <div className="cadastroL-cadastro">
+            <img src={userIcon} className="imglogo" alt="userIcon"></img>
+            <h1
+              className="txt-logotipo-cadastro"
+              onChange={(e) => props.setFoto(e.target.value)}
+            >
+              LOGOTIPO DA BARBEARIA
+            </h1>
+
+            <div className="div-input-cadastro">
+              <input
+                type="text"
+                name="nome"
+                id="nome"
+                className="input-cadastro"
+                onChange={(e) => props.setName(e.target.value)}
+              />
+              <label>Nome da barbearia *</label>
+            </div>
+
+            <div className="div-input-cadastro">
+              <input
+                type="text"
+                name="telefone"
+                id="telefone"
+                className="input-cadastro"
+                onChange={(e) => props.setTelefone(e.target.value)}
+              />
+              <label>Telefone para contato * </label>
+            </div>
+          </div>
+
+          {/*----CADASTRO LADO DIREITO----*/}
+          <div className="cadastroR-cadastro">
+            <div className="div-input-cadastro">
+              <input 
+                type="text" 
+                name="email" 
+                id="email" 
+                className="input-cadastro"
+                onChange={(e) => props.setEmail(e.target.value)}
+                />
+              <label>e-mail *</label>
+            </div>
+            <div className="div-password-cadastro">
+              <div className="input-password-cadastro">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="input-cadastro"
+                  onChange={(e) => props.setPassword(e.target.value)}
+                />
+                <label>Senha *</label>
+              </div>
+              <div className="input-password-cadastro">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="input-cadastro"
+                  onChange={(e) => props.setPassword(e.target.value)}
+                />
+                <label>Repetir senha *</label>
+              </div>
+            </div>
+            <div className="div-input-cadastro">
+              <input
+                type="text"
+                name="endereço"
+                id="endereço"
+                className="input-cadastro"
+                onChange={(e) => props.setEndereco(e.target.value)}
+              />
+              <label>Endereço da sua barbearia *</label>
+            </div>
+            <div className="div-input-cadastro">
+              <input 
+                type="text" 
+                name="cnpj" 
+                id="cnpj" 
+                className="input-cadastro"
+                onChange={(e) => props.setCNPJ(e.target.value)} 
+                />
+              <label>CNPJ *</label>
+            </div>
+            <div className="div-input-cadastro">
+              <input
+                type="text"
+                name="horarioat"
+                id="horarioat"
+                className="input-cadastro"
+                onChange={(e) => props.setHorario(e.target.value)}
+              />
+              <label>Horário de atendimento *</label>
+            </div>
+            <button onClick={props.handleSignOut} className="botao-cadastrar-cadastro">
+              <h1>CONCLUIR CADASTRO</h1>
+            </button>
+          </div>
+
+        </form>
+      </div>
     </div>
   );
 }
