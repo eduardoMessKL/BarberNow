@@ -9,8 +9,11 @@ import {
 import { app } from "../../firebase/firebaseConfig";
 import { uploadImageAndGetURL } from "./firestoreService";
 import { Barbearia } from "../entities/Barbearia";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../firebase/firebaseConfig"; 
 
-const db = getFirestore(app);
+
+const database = getFirestore(app);
 
 //funções CRUD Barbearia
 export async function createBarbearia(barbeariaData, file) {
@@ -35,7 +38,7 @@ export async function createBarbearia(barbeariaData, file) {
         return;
       }
     }
-    await setDoc(doc(db, "barbearias", barbearia.cnpj), barbearia.toObject());
+    await setDoc(doc(database, "barbearias", barbearia.cnpj), barbearia.toObject());
   } catch (e) {
     console.error("Error adding document: ", e);
     throw e; // Rejeita a promessa para que você possa capturar esse erro mais tarde
@@ -44,7 +47,7 @@ export async function createBarbearia(barbeariaData, file) {
 
 export async function getBarbearia(cnpj) {
   try {
-    const docRef = doc(db, "barbearias", cnpj);
+    const docRef = doc(database, "barbearias", cnpj);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       return docSnap.data();
@@ -58,7 +61,7 @@ export async function getBarbearia(cnpj) {
 
 export async function updateBarbearia(cnpj, updateData) {
   try {
-    const docRef = doc(db, "barbearias", cnpj);
+    const docRef = doc(database, "barbearias", cnpj);
     await updateDoc(docRef, updateData);
   } catch (e) {
     console.error("Error updating document: ", e);
@@ -67,8 +70,39 @@ export async function updateBarbearia(cnpj, updateData) {
 
 export async function deleteBarbearia(cnpj) {
   try {
-    await deleteDoc(doc(db, "barbearias", cnpj));
+    await deleteDoc(doc(database, "barbearias", cnpj));
   } catch (e) {
     console.error("Error deleting document: ", e);
   }
 }
+
+export async function getAllBarbearias() {
+  try {
+    const querySnapshot = await getDocs(collection(db, "barbearias"));
+    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (e) {
+    console.error("Error fetching barbearias: ", e);
+  }
+}
+
+export const orderByName = async (reverse = false) => {
+  let barbearias = await getAllBarbearias();
+  return barbearias.sort((a, b) => {
+      if (!reverse) {
+          return a.nome.localeCompare(b.nome);
+      } else {
+          return b.nome.localeCompare(a.nome);
+      }
+  });
+};
+
+export const orderByPriceMax = async (reverse = false) => {
+  let barbearias = await getAllBarbearias();
+  return barbearias.sort((a, b) => {
+      if (!reverse) {
+          return parseFloat(a.precoMax) - parseFloat(b.precoMax);
+      } else {
+          return parseFloat(b.precoMax) - parseFloat(a.precoMax);
+      }
+  });
+};
