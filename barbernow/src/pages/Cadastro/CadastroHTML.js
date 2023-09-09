@@ -19,7 +19,7 @@ function CadastroHTML(props) {
         </div>
         <div className="headerR-cadastro">
           <button className='botao-header-cadastro'>
-            <Link to="/" className="botao-link-cadastro">LOGIN</Link>
+            <Link to="/login" className="botao-link-cadastro">LOGIN</Link>
           </button>
         </div>
       </header>
@@ -31,8 +31,9 @@ function CadastroHTML(props) {
           {/*----ARROW----*/}
           <div className="card-cadastro-arrow">
             <button className="botao-arrow-cadastro">
-              <Link to="/"></Link>
-              <img src={arrow} className="arrow-cadastro" alt="arrow-cadastro"></img>
+            <Link to="/">
+              <img src={arrow} className='arrow' alt='arrow'></img>
+            </Link>
             </button>
           </div>
 

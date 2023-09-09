@@ -25,7 +25,9 @@ function LoginHTML(props) {
           {/*----ARROW----*/}
           <div className='card-login-arrow'>
             <button className='botao-arrow'>
+            <Link to="/">
               <img src={arrow} className='arrow' alt='arrow'></img>
+            </Link>
             </button>
           </div>
           {/*----IMAGEM + TXT LOGIN----*/}

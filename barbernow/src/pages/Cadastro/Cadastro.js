@@ -24,7 +24,7 @@ export function Cadastro() {
           setEmail={setEmail}
           setPassword={setPassword}
           handleSignOut={handleSignOut}
-          SignInLink={() => <Link to="/">Acesse sua conta aqui</Link>}
+          SignInLink={() => <Link to="/login">Acesse sua conta aqui</Link>}
         />
         <div>
           <p>Error: {error.message}</p>
@@ -41,7 +41,7 @@ export function Cadastro() {
           setEmail={setEmail}
           setPassword={setPassword}
           handleSignOut={handleSignOut}
-          SignInLink={() => <Link to="/">Acesse sua conta aqui</Link>}
+          SignInLink={() => <Link to="/login">Acesse sua conta aqui</Link>}
         />
   );
 }
