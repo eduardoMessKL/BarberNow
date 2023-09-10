@@ -8,18 +8,18 @@ function CadastroHTML(props) {
   return (
     <div className="container-cadastro">
       {/*----HEDAER----*/}
-      <header className="header-cadastro">
-        <div className="headerL-cadastro">
+      <header className="header">
+        <div className="headerL">
           <img
             src={logoimg}
-            className="imglogo-header-cadastro"
-            alt="logoimg-header-cadastro"
+            className="imglogo-header"
+            alt="logoimg-header"
           ></img>
-          <h1 className="logotxt-header-cadastro">BarberNow</h1>
+          <h1 className="logotxt-header">BarberNow</h1>
         </div>
-        <div className="headerR-cadastro">
-          <button className='botao-header-cadastro'>
-            <Link to="/login" className="botao-link-cadastro">LOGIN</Link>
+        <div className="headerR">
+          <button className='botao-header'>
+            <Link to="/login" className="botao-link">LOGIN</Link>
           </button>
         </div>
       </header>
@@ -39,7 +39,8 @@ function CadastroHTML(props) {
 
           {/*----CADASTRO LADO ESQUERDO----*/}
           <div className="cadastroL-cadastro">
-            <img src={userIcon} className="imglogo" alt="userIcon"></img>
+            <img src={userIcon} className="imglogo" alt="userIcon"
+            onChange={(e) => props.setFoto(e.target.value)}></img>
             <h1
               className="txt-logotipo-cadastro"
               onChange={(e) => props.setFoto(e.target.value)}
@@ -69,7 +70,6 @@ function CadastroHTML(props) {
               <label>Telefone para contato * </label>
             </div>
           </div>
-
           {/*----CADASTRO LADO DIREITO----*/}
           <div className="cadastroR-cadastro">
             <div className="div-input-cadastro">
@@ -134,9 +134,21 @@ function CadastroHTML(props) {
               />
               <label>Horário de atendimento *</label>
             </div>
+            <div className="div-input-cadastro">
+              <input
+                type="text"
+                name="horarioat"
+                id="horarioat"
+                className="input-cadastro"
+                onChange={(e) => props.setHorario(e.target.value)}
+              />
+              <label>Link WhatsApp *</label>
+            </div>
+            <Link to={'/perfil'}>
             <button onClick={props.handleSignOut} className="botao-cadastrar-cadastro">
               <h1>CONCLUIR CADASTRO</h1>
             </button>
+            </Link>
           </div>
 
         </form>

@@ -15,12 +15,16 @@ export function HomeHTML(){
                     <h1 className='logotxt-header'>BarberNow</h1>
                 </div>
                 <div className='headerR'>
+                    <Link to="/cadastro" className="botao-link">
                     <button className='botao-header'>
-                        <Link to="/cadastro" className="botao-link">REGISTRAR-SE</Link>
+                        REGISTRAR-SE
                     </button>
+                    </Link>
+                    <Link to="/login" className="botao-link">L
                     <button className='botao-header'>
-                        <Link to="/login" className="botao-link">LOGIN</Link>
+                        LOGIN
                     </button>
+                    </Link>
                 </div>
             </header>
             <div className="div-inf-home">
@@ -66,6 +70,7 @@ export function HomeHTML(){
                             </div>
                         </Link>
                    ))} */}
+                   <Link to={'/servicos'}>
                     <div className="card-barbearia">
                         <div className="card-barbeariaL"><img src={logotipo} className="logotipo" alt="logotipo-barbearia"></img></div>       
                         <div className="card-barbeariaR">                 
@@ -74,6 +79,7 @@ export function HomeHTML(){
                             <h2>R$20,00 - R$75,00</h2>
                         </div>
                     </div>
+                    </Link>
                     <div className="card-barbearia">
                         <div className="card-barbeariaL"><img src={logotipo}  className="logotipo" alt="logotipo-barbearia"></img></div>       
                         <div className="card-barbeariaR">                 
