@@ -56,9 +56,11 @@ function LoginHTML(props) {
             />
             <label>Senha</label>
           </div>
-          <button className="botao-entrar" onClick={props.handleSignIn}>
+          <Link to={'/perfil'}>
+          <button className="botao-entrar">
             ENTRAR
           </button>
+          </Link>
     </form>
     </div>
   </div>
