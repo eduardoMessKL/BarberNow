@@ -1,10 +1,12 @@
 class Servico {
-  constructor(servicoID, nome, descricao, preco, fotoURL) {
+  constructor(servicoID, nome, descricao, preco, duracao, fotoURL, tipo) {
     this._servicoID = servicoID;
     this._nome = nome;
     this._descricao = descricao;
     this._preco = preco;
+    this._duracao = duracao;
     this._fotoURL = fotoURL;
+    this._tipo = tipo;
   }
 
   get servicoID() {
@@ -44,6 +46,19 @@ class Servico {
 
   set fotoURL(value) {
     this._fotoURL = value;
+  }
+  get duracao() {
+    return this._duracao;
+  }
+
+  set duracao(value) {
+    this._duracao = value;
+  }
+  get tipo() {
+    return this._tipo;
+  }
+  set tipo(value) {
+    this._tipo = value;
   }
 }
 

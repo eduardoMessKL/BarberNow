@@ -77,12 +77,12 @@ export function PerfilHTML({barbearia} ){
                     </div>
                     {/*CARD PARTE DE BAIXO*/}
                     <div className="card-bottom">
-                        <Link to='/add-servico'>
+                    <Link to={`/add-servico/${barbearia.cnpj}`}>
                         <button className="botao-addServicos">
                             <h3>ADICIONAR SERVIÇOS</h3>
                             <img src={Adicionar}></img>
                         </button>
-                        </Link>
+                    </Link>
                         <Link to='/consultar-servico'>
                         <button className="botao-consultarServicos">
                             <h3>CONSULTAR SERVICOS</h3>
