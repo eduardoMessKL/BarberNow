@@ -24,50 +24,6 @@ body, .html{
     overflow-x: hidden;
 }
 
-.header-cadastro{
-    height: 13%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-}
-
-.headerL-cadastro{
-    align-items: center;
-    display: flex;
-    margin-left: 3%;
-}
-
-.headerR-cadastro{
-    margin-right: 3%;
-}
-
-.logotxt-header-cadastro{
-    font-family: 'Poppins', sans-serif;
-    margin-left: 10%;
-    color: aliceblue;
-    letter-spacing: 1px;
-    font-size: 2.5em;
-}
-
-.imglogo-header-cadastro{
-    height: 5.7rem;
-    margin: 0;
-}
-
-.botao-header-cadastro{
-    width: 12rem;
-    padding: 1rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: 1.5rem;
-    letter-spacing: 0.06rem;
-    background: #F5BD1F;
-    box-shadow: 0px 0px 4px 0px #F5BD1F;
-    border-radius: 0.3rem;
-    border-style: none;
-}
-
 .botao-link-cadastro{
     text-decoration: none;
     color: black;
@@ -117,7 +73,6 @@ body, .html{
 
 .cadastroL-cadastro, img{
     height: 60%;
-    margin-bottom: 3%;
 }
 
 .txt-logotipo-cadastro{
@@ -166,4 +121,15 @@ body, .html{
     border-radius: 0.25rem;
     background: #F5BD1F;
     box-shadow: 0px 0px 10px 0px rgba(245, 189, 31, 0.55);
+}
+
+.botao-cadastrar-cadastro:hover{
+    transition: 0.5s;
+    background: #fff823;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 0px #F5BD1F;
+}
+
+.imglogo:hover{
+    cursor: pointer;
 }

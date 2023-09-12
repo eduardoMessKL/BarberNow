@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, .html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFEFC;
+}
+
+.container-perfil{
+    background-image: url(../../assets/Background/Background-PERFIL.png);
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow-x: hidden;
+}
+
+.div-inf-perfil{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-consultarServicos:hover, .botao-addServicos:hover{
+    transition: 0.5s;
+    background: #fff823;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 0px #F5BD1F;
+}
+
+.card-perfil{
+    width: 80vw;
+    height: 120vh;
+    border-radius: 0.2rem;
+    background: linear-gradient(180deg, rgba(255, 254, 252, 0.65) 0.02%, rgba(251, 251, 251, 0.65) 128.22%), linear-gradient(181deg, rgba(255, 255, 255, 0.65) -39.57%, rgba(255, 255, 255, 0.00) 99.45%);
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25) inset;
+    filter: blur(0px);
+    backdrop-filter: blur(26px);
+    overflow: hidden;
+}
+
+.card-topL img, .card-topR img{
+    height: 3rem;
+}
+
+.card-topM img{
+    height: 30vh;
+}
+
+.card-top, .card-bottom{
+    justify-content: center;
+    display: flex;
+}
+
+.card-topL, .card-topR{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.card-topR a:hover{
+    transition: 0.5s;
+    text-shadow: 0px 0px 10px rgba(255, 0, 0, 0.792);
+}
+
+.card-topL:hover{
+    transition: 0.5s;
+    text-shadow: 0px 0px 10px rgba(255, 238, 0, 0.792);
+}
+
+.card-topM{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.card-mid{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-mid h1{
+    margin-top: 2rem;
+    margin-left: 5vw;
+    font-size: 1.5rem;
+}
+
+.card-top h1{
+    font-size: 2.7rem;
+}
+
+.info-perfil{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-bottom{
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-bottom img{
+    margin-left: 1.2em;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-consultarServicos, .botao-addServicos{
+    background: #F5BD1F;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    padding: 0.3em;
+    font-size: 1.2em;
+    width: 33vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.botao-addServicos h3{
+    text-decoration: none;
+}
+
+.info-perfil h2{
+    width: 100%;
+    font-weight: 100;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px;
+    margin-bottom: 1.5rem;
+    border-style: solid;
+}
+
+.card-topR a, .card-topL a, .card-bottom a{
+    color: black;
+    text-decoration: none;
+}
+
