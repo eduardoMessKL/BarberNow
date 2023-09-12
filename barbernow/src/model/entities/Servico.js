@@ -1,4 +1,4 @@
-class Servico {
+export class Servico {
   constructor(servicoID, nome, descricao, preco, duracao, fotoURL, tipo) {
     this._servicoID = servicoID;
     this._nome = nome;
@@ -60,6 +60,17 @@ class Servico {
   set tipo(value) {
     this._tipo = value;
   }
+
+  toObject() {
+    return {
+      servicoID: this.servicoID,
+      nome: this.nome,
+      descricao: this.descricao,
+      preco: this.preco,
+      duracao: this.duracao,
+      fotoURL: this.fotoURL,
+      tipo: this.tipo,
+    };
+  }
 }
 
-export default Servico;

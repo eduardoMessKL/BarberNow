@@ -22,9 +22,9 @@ export function Perfil() {
     }, [cnpj]);
 
     // Caso queira renderizar algo enquanto os dados ainda não foram carregados:
-    if (!barbearia.cnpj) {
-        return <div>Carregando...</div>;
-    }
+    //if (!barbearia.cnpj) {
+       // return <div>Carregando...</div>;
+   // }
 
     return (
         <div className="html-login">

@@ -11,8 +11,7 @@ import {
   //uploadImageAndGetURL,
 } from "../../model/services/firestoreService";
 import { createBarbearia } from "../../model/services/BarbeariaService";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 export function Cadastro() {
   // Estados para os novos campos
