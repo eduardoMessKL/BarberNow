@@ -1,10 +1,10 @@
 import React from "react";
 import arrow from "../../assets/Arrow Black.png";
 import logoimg from "../../assets/Logo/LogoBranca.png";
-import userIcon from "../../assets/User Icon.png"
+import userIcon from "../../assets/User Icon.png";
 import { Link } from "react-router-dom";
 
-function CadastroHTML(props) {
+function CadastroHTML(props, {barbearia}) {
   return (
     <div className="container-cadastro">
       {/*----HEDAER----*/}
@@ -18,8 +18,10 @@ function CadastroHTML(props) {
           <h1 className="logotxt-header">BarberNow</h1>
         </div>
         <div className="headerR">
-          <button className='botao-header'>
-            <Link to="/login" className="botao-link">LOGIN</Link>
+          <button className="botao-header">
+            <Link to="/login" className="botao-link">
+              LOGIN
+            </Link>
           </button>
         </div>
       </header>
@@ -27,26 +29,26 @@ function CadastroHTML(props) {
       {/*----DIV INFERIOR----*/}
       <div className="div-inf-cadastro">
         <form className="card-cadastro-cadastro">
-
           {/*----ARROW----*/}
           <div className="card-cadastro-arrow">
             <button className="botao-arrow-cadastro">
-            <Link to="/">
-              <img src={arrow} className='arrow' alt='arrow'></img>
-            </Link>
+              <Link to="/">
+                <img src={arrow} className="arrow" alt="arrow"></img>
+              </Link>
             </button>
           </div>
 
           {/*----CADASTRO LADO ESQUERDO----*/}
           <div className="cadastroL-cadastro">
-            <img src={userIcon} className="imglogo" alt="userIcon"
-            onChange={(e) => props.setFoto(e.target.value)}></img>
-            <h1
-              className="txt-logotipo-cadastro"
-              onChange={(e) => props.setFoto(e.target.value)}
-            >
-              LOGOTIPO DA BARBEARIA
-            </h1>
+            <img src={userIcon} className="imglogo" alt="userIcon"></img>
+            <div>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => props.setImageFile(e.target.files[0])}
+              />
+            </div>
+            <h1>LOGOTIPO DA BARBEARIA</h1>
 
             <div className="div-input-cadastro">
               <input
@@ -73,13 +75,13 @@ function CadastroHTML(props) {
           {/*----CADASTRO LADO DIREITO----*/}
           <div className="cadastroR-cadastro">
             <div className="div-input-cadastro">
-              <input 
-                type="text" 
-                name="email" 
-                id="email" 
+              <input
+                type="text"
+                name="email"
+                id="email"
                 className="input-cadastro"
                 onChange={(e) => props.setEmail(e.target.value)}
-                />
+              />
               <label>e-mail *</label>
             </div>
             <div className="div-password-cadastro">
@@ -97,9 +99,9 @@ function CadastroHTML(props) {
                 <input
                   type="password"
                   name="password"
-                  id="password"
+                  id="repetirsenha"
                   className="input-cadastro"
-                  onChange={(e) => props.setSenha(e.target.value)}
+                  onChange={(e) => props.setRepetirSenha(e.target.value)}
                 />
                 <label>Repetir senha *</label>
               </div>
@@ -115,13 +117,13 @@ function CadastroHTML(props) {
               <label>Endereço da sua barbearia *</label>
             </div>
             <div className="div-input-cadastro">
-              <input 
-                type="text" 
-                name="cnpj" 
-                id="cnpj" 
+              <input
+                type="text"
+                name="cnpj"
+                id="cnpj"
                 className="input-cadastro"
-                onChange={(e) => props.setCnpj(e.target.value)} 
-                />
+                onChange={(e) => props.setCnpj(e.target.value)}
+              />
               <label>CNPJ *</label>
             </div>
             <div className="div-input-cadastro">
@@ -134,7 +136,7 @@ function CadastroHTML(props) {
               />
               <label>Horário de atendimento *</label>
             </div>
-            <div className="div-input-cadastro">
+            {/*<div className="div-input-cadastro">
               <input
                 type="text"
                 name="horarioat"
@@ -144,13 +146,14 @@ function CadastroHTML(props) {
               />
               <label>Link WhatsApp *</label>
             </div>
-            <Link to={'/perfil'}>
-            <button onClick={props.handleSignOut} className="botao-cadastrar-cadastro">
-              <h1>CONCLUIR CADASTRO</h1>
-            </button>
-            </Link>
+              */}
+              <button
+                onClick={props.handleSignUp}
+                className="botao-cadastrar-cadastro"
+              >
+                <h1>CONCLUIR CADASTRO</h1>
+              </button>
           </div>
-
         </form>
       </div>
     </div>

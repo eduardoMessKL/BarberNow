@@ -21,7 +21,7 @@ function LoginHTML(props) {
       </header>
       <div className="div-inf">
         {/*----CARD LOGIN----*/}
-        <form className='card-login'>
+        <form className='card-login' onSubmit={props.handleSignIn}>
           {/*----ARROW----*/}
           <div className='card-login-arrow'>
             <button className='botao-arrow'>
@@ -56,11 +56,11 @@ function LoginHTML(props) {
             />
             <label>Senha</label>
           </div>
-          <Link to={'/perfil'}>
-          <button className="botao-entrar">
+          
+          <button className="botao-entrar" type="submit">
             ENTRAR
           </button>
-          </Link>
+          
     </form>
     </div>
   </div>

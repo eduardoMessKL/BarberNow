@@ -4,17 +4,27 @@ import "./Perfil.css";
 import { useParams } from "react-router-dom";
 import { getBarbearia } from "../../model/services/BarbeariaService";
 
-export function Perfil(){
+export function Perfil() {
     const [barbearia, setBarbearia] = useState({});
-    const { cnpj } = useParams();
+    const params = useParams();
+    const cnpj = params.cnpj;
 
     useEffect(() => {
         async function fetchData() {
-            const info = await getBarbearia(cnpj);
-            setBarbearia(info);
+            try {
+                const info = await getBarbearia(cnpj);
+                setBarbearia(info);
+            } catch (error) {
+                console.error("Erro ao buscar barbearia:", error);
+            }
         }
         fetchData();
     }, [cnpj]);
+
+    // Caso queira renderizar algo enquanto os dados ainda não foram carregados:
+    if (!barbearia.cnpj) {
+        return <div>Carregando...</div>;
+    }
 
     return (
         <div className="html-login">

@@ -9,7 +9,7 @@ import {
 import { app } from "../../firebase/firebaseConfig";
 import { uploadImageAndGetURL } from "./firestoreService";
 import { Barbearia } from "../entities/Barbearia";
-import { getDocs, collection } from "firebase/firestore";
+import { query, where, getDocs, collection} from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig"; 
 
 

@@ -1,53 +1,54 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
-import arrowImg from "../../assets/arrow.svg";
-import logoImg from "../../assets/logo.svg";
-import "./Login.css"
-import { auth } from "../../firebase/firebaseConfig";
+import { Link, useNavigate } from "react-router-dom";
+import { db, auth } from "../../firebase/firebaseConfig";
 import LoginHTML from "./LoginHTML";
+import "./Login.css";
+import { getBarbearia } from "../../model/services/BarbeariaService";
+import { query, where, getDocs, collection } from "firebase/firestore";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [signInWithEmailAndPassword, , loading, error] = useSignInWithEmailAndPassword(auth);
 
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-
-  function handleSignIn(e) {
+  async function handleSignIn(e) {
     e.preventDefault();
-    signInWithEmailAndPassword(email, password);
+  
+    try {
+      await signInWithEmailAndPassword(email, password);
+      const q = query(
+        collection(db, "barbearias"),
+        where("email", "==", email)
+      );
+  
+      const querySnapshot = await getDocs(q);
+  
+      if (!querySnapshot.empty) {
+        const userData = querySnapshot.docs[0].data();
+        const cnpj = userData.cnpj;
+        navigate(`/perfil/${cnpj}`);
+      } else {
+        console.error("No user found with the given email in barbearias collection");
+      }
+    } catch (signInError) {
+      console.error("Error during sign-in:", signInError);
+    }
   }
+
   if (error) {
     return (
-      <div className="flamengo">
-        <LoginHTML
-          setEmail={setEmail}
-          setPassword={setPassword}
-          handleSignIn={handleSignIn}
-          RegisterLink={() => <Link to="/cadastro">Crie a sua conta aqui</Link>}
-        />
-        <div>
-          <p>Error: {error.message}</p>
-        </div>
+      <div>
+        <p>Error: {error.message}</p>
       </div>
     );
   }
+
   if (loading) {
     return <p>carregando...</p>;
   }
-  if (user) {
-    return(
-      <div>
-      <LoginHTML
-        setEmail={setEmail}
-        setPassword={setPassword}
-        handleSignIn={handleSignIn}
-        RegisterLink={() => <Link to="/cadastro">Crie a sua conta aqui</Link>}
-      />
-    </div>
-    );
-  }
+
   return (
     <div className="html-login">
       <LoginHTML
@@ -59,3 +60,4 @@ export function Login() {
     </div>
   );
 }
+

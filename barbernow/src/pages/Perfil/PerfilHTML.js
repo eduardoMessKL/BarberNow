@@ -45,8 +45,8 @@ export function PerfilHTML({barbearia} ){
                             </Link>
                         </div>
                         <div className="card-topM">
-                            <img src={logotipo}></img>
-                            <h1>Style cuts barbearia</h1>
+                            <img src={barbearia.fotoURL}></img>
+                            <h1>{barbearia.nome}</h1>
                         </div>
                         <div className="card-topR">
                             <Link to={'/erro'}>

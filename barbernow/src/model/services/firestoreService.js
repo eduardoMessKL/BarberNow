@@ -2,6 +2,7 @@
 
 import { app } from "../../firebase/firebaseConfig";
 import {
+  addDoc,
   collection,
   doc,
   getFirestore,
@@ -67,3 +68,13 @@ export const addBarbeariaToFirestore = async (userId, data) => {
     console.error("Erro ao adicionar barbearia:", error);
   }
 };
+
+export const addServicoToFirestore = async (cnpj, data) => {
+  try {
+    const servicosRef = collection(db, "barbearias", cnpj, "servicos");
+    await addDoc(servicosRef, data);
+  } catch (error) {
+    console.error("Erro ao adicionar serviço:", error);
+  }
+};
+
