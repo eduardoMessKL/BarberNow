@@ -23,10 +23,10 @@ export function AppRoutes(){
                 <Route path = "/cadastro" element = {<Cadastro/>}/>
                 <Route path = "/erro" element = {<Erro/>}/>
 
-                <Route path = "/perfil" element = {<Perfil/>}/>
+                <Route path="/perfil/:cnpj" component={Perfil} />
                 <Route path = "/editar-perfil" element = {<PerfilE/>}/>
 
-                <Route path = "/servicos" element = {<Servicos/>}/>
+                <Route path="/servicos/:cnpj" component={ServicosC} />
                 <Route path = "/add-servico" element = {<AddServicos/>}/>
                 <Route path = "/editar-servico" element = {<ServicosE/>}/>
                 <Route path = "/consultar-servico" element = {<ServicosC/>}/>

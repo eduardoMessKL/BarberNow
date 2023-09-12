@@ -62,7 +62,7 @@ export function HomeHTML({ barbearias, onOrderByName, onOrderByPriceMax }) {
         </div>
           <div className="catalogo">
             {barbearias.map((barbearia) => (
-              <Link to={`/servicos/${barbearia.id}`} key={barbearia.id}>
+              <Link to={`/servicos/${barbearia.cnpj}`} key={barbearia.id}>
                 <div className="card-barbearia">
                   <div className="card-barbeariaL">
                     <img src={barbearia.fotoURL} className="logotipo" alt="logotipo-barbearia"></img>

@@ -1,19 +1,16 @@
-import { useState } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
-import { auth } from "../../firebase/firebaseConfig";
-import CadastroHTML from "./CadastroHTML";
-import "./Cadastro.css"
-//importando as funções do meu arquivo firestoreService (banco de dados do Firebase)
+import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate  } from 'react-router-dom';
+import { auth } from '../../firebase/firebaseConfig';
+import CadastroHTML from './CadastroHTML';
+import './Cadastro.css';
 import {
   checkIfCnpjExists,
   checkIfEmailExists,
-  //uploadImageAndGetURL,
-} from "../../model/services/firestoreService";
-import { createBarbearia } from "../../model/services/BarbeariaService";
+} from '../../model/services/firestoreService';
+import { createBarbearia } from '../../model/services/BarbeariaService';
 
 export function Cadastro() {
-  // Estados para os novos campos
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
   const [cnpj, setCnpj] = useState("");
@@ -24,36 +21,29 @@ export function Cadastro() {
   const [repetirSenha, setRepetirSenha] = useState("");
   const [imageFile, setImageFile] = useState(null);
 
-  //sem usar por enquanto
-  //const [setLoading] = useState(false);
-  //const [errorMessage, setErrorMessage] = useState("");
-
   const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
-  //função inteira para criar usuario/barbearia e adicionar seus dados no banco
+  const navigate = useNavigate();  // Instância do useHistory
+
   async function handleSignUp(e) {
     e.preventDefault();
 
-    //checa se CNPJ ja existe no banco
     const cnpjExists = await checkIfCnpjExists(cnpj);
     if (cnpjExists) {
       console.error("CNPJ já cadastrado.");
       return;
     }
 
-    // Checa se email existe
     const emailExists = await checkIfEmailExists(email);
     if (emailExists) {
       console.error("E-mail já cadastrado.");
       return;
     }
 
-    //uma simples condição para criar o usuário (devemos colocar mais)
     if (senha === repetirSenha) {
       createUserWithEmailAndPassword(email, senha)
         .then(async (userCredential) => {
-          const user = userCredential.user; //deve ser para usar as credencias do usuario criado, mas nao é usada(gpt4...)
           const barbeariaData = {
             nome: nome,
             telefone: telefone,
@@ -63,8 +53,9 @@ export function Cadastro() {
             email: email,
             senha: senha,
           };
-          //depois de criar o usuario/barbearia, adiciona no banco
-          await createBarbearia(barbeariaData, imageFile); // Passa os dados e o arquivo para a função //
+
+          await createBarbearia(barbeariaData, imageFile);
+          navigate(`/perfil/${cnpj}`);  // Redirecionando para a página de perfil do CNPJ registrado
         })
         .catch((error) => {
           console.error("Erro ao registrar usuário:", error);
@@ -73,6 +64,7 @@ export function Cadastro() {
       console.error("As senhas não coincidem.");
     }
   }
+
   if (error) {
     return (
       <div>
@@ -87,7 +79,7 @@ export function Cadastro() {
           setRepetirSenha={setRepetirSenha}
           setImageFile={setImageFile}
           handleSignUp={handleSignUp}
-          SignInLink={() => <Link to="/">Acesse sua conta aqui</Link>}
+          SignInLink={() => <Link to="/login">Acesse sua conta aqui</Link>}
         />
         <div>
           <p>Error: {error.message}</p>
@@ -99,13 +91,7 @@ export function Cadastro() {
   if (loading) {
     return <p>carregando...</p>;
   }
-  /*if (createUserWithEmailAndPassword) {
-    return (
-      <div>
-        <h1> Barbearia cadastrada com sucesso!!</h1>
-      </div>
-    );
-  }*/
+
   return (
     <CadastroHTML
       setEmail={setEmail}

@@ -7,7 +7,7 @@ import logotipo from "../../assets/Logotipo.png"
 import Adicionar from "../../assets/Elements/Adicionar.png"
 import arrow from "../../assets/Arrow Black.png"
 
-export function PerfilHTML(){
+export function PerfilHTML({barbearia} ){
     return (
         <div className="container-perfil">
             <header className='header'>
@@ -61,17 +61,17 @@ export function PerfilHTML(){
                         <div className="info-perfil">
                             <div className="card-midL">
                                 <h3>E-mail:</h3>
-                                <h2>styelcuts@gmail.com{/*barbearia.email*/}</h2>
+                                <h2>{barbearia.email}</h2>
                                 <h3>Endereço:</h3>
-                                <h2>rua pinto rola, 123{/*barbearia.endereço*/}</h2>
+                                <h2>{barbearia.endereco}</h2>
                             </div>
                             <div className="card-midR">
                                 <h3>Telefone:</h3>
-                                <h2>42 9995040123{/*barbearia.telefone*/}</h2>
+                                <h2>{barbearia.telefone}</h2>
                                 <h3>CNPJ:</h3>
-                                <h2>148926938126738{/*barbearia.cnpj*/}</h2>
+                                <h2>{barbearia.cnpj}</h2>
                                 <h3>Horario de atendimento:</h3>
-                                <h2>Segunda à sexta das 7:30-18:30{/*barbearia.horarioatendimento*/}</h2>
+                                <h2>{barbearia.horario}</h2>
                             </div>
                         </div>
                     </div>

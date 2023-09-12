@@ -8,7 +8,7 @@ import Wpp from "../../assets/Elements/WhatsApp.png"
 
 import { Link } from "react-router-dom";
 
-function ServicosC(){
+function ServicosHTMLC({ servicos, barbearia}){
     return(
         <div className="container-erro">
             {/*----HEDAER----*/}
@@ -49,98 +49,36 @@ function ServicosC(){
                             </button>
                         </div>
                         <div className="dados-barbeariaR">
-                            <h1>Style Cuts Barbearia</h1>
-                            <h3> - Rua Padre Chagas, 4598, Centro</h3>
-                            <h3> - 42 99987-8729</h3>
-                            <h3> - Horário de atendimento:<br/>Seg. à Sex.: 8h - 18h</h3>
+                            <h1>{barbearia.nome}</h1>
+                            <h3>{barbearia.endereco}</h3>
+                            <h3>{barbearia.telefone}</h3>
+                            <h3>{barbearia.horario}</h3>
                         </div>
                     </div>
                 </div>
                 <div className="servicos-barbearia">
-                    <Link to={'/editar-servico'}>
-                    <div className="card-servico">
-                        <div className="card-servicoL">
-                            <img src={CorteCabelo} className="CorteCabelo" alt="logotipo-barbearia"></img>
-                        </div>       
-                        <div className="card-servicoR">                 
-                            <h1>Corte Maloka</h1>
-                            <h3>Cabelo pra voce ficar <br/>chave na quebrada!</h3>
-                            <h2>R$20,00</h2>
-                            <h3>60 min</h3>
+                    {servicos.map(servico => (
+                    <Link to={'/editar-servico'} key={servico.id}>
+                        <div className="card-servico">
+                            <div className="card-servicoL">
+                                <img src={CorteCabelo} className="CorteCabelo" alt="logotipo-barbearia"></img>
+                            </div>
+                            <div className="card-servicoR">
+                                <h1>{servico.nome}</h1>
+                                <h3>{servico.descricao}</h3>
+                                <h2>{servico.preco}</h2>
+                                <h3>{servico.duracao}</h3>
+                            </div>
+                            <div className="div-pincel">
+                                <img src={Pencil} className="pincel"></img>
+                            </div>
                         </div>
-                        <div className="div-pincel">
-                            <img src={Pencil} className="pincel"></img>
-                        </div>
-                    </div>
                     </Link>
-                    <Link to={'/editar-servico'}>
-                    <div className="card-servico">
-                        <div className="card-servicoL">
-                            <img src={CorteCabelo} className="CorteCabelo" alt="logotipo-barbearia"></img>
-                        </div>       
-                        <div className="card-servicoR">                 
-                            <h1>Corte Maloka</h1>
-                            <h3>Cabelo pra voce ficar <br/>chave na quebrada!</h3>
-                            <h2>R$20,00</h2>
-                            <h3>60 min</h3>
-                        </div>
-                        <div className="div-pincel">
-                            <img src={Pencil} className="pincel"></img>
-                        </div>
-                    </div>
-                    </Link>
-                    <Link to={'/editar-servico'}>
-                    <div className="card-servico">
-                        <div className="card-servicoL">
-                            <img src={CorteCabelo} className="CorteCabelo" alt="logotipo-barbearia"></img>
-                        </div>       
-                        <div className="card-servicoR">                 
-                            <h1>Corte Maloka</h1>
-                            <h3>Cabelo pra voce ficar <br/>chave na quebrada!</h3>
-                            <h2>R$20,00</h2>
-                            <h3>60 min</h3>
-                        </div>
-                        <div className="div-pincel">
-                            <img src={Pencil} className="pincel"></img>
-                        </div>
-                    </div>
-                    </Link>
-                    <Link to={'/editar-servico'}>
-                    <div className="card-servico">
-                        <div className="card-servicoL">
-                            <img src={CorteCabelo} className="CorteCabelo" alt="logotipo-barbearia"></img>
-                        </div>       
-                        <div className="card-servicoR">                 
-                            <h1>Corte Maloka</h1>
-                            <h3>Cabelo pra voce ficar <br/>chave na quebrada!</h3>
-                            <h2>R$20,00</h2>
-                            <h3>60 min</h3>
-                        </div>
-                        <div className="div-pincel">
-                            <img src={Pencil} className="pincel"></img>
-                        </div>
-                    </div>
-                    </Link>
-                    <Link to={'/editar-servico'}>
-                    <div className="card-servico">
-                        <div className="card-servicoL">
-                            <img src={CorteCabelo} className="CorteCabelo" alt="logotipo-barbearia"></img>
-                        </div>       
-                        <div className="card-servicoR">                 
-                            <h1>Corte Maloka</h1>
-                            <h3>Cabelo pra voce ficar <br/>chave na quebrada!</h3>
-                            <h2>R$20,00</h2>
-                            <h3>60 min</h3>
-                        </div>
-                        <div className="div-pincel">
-                            <img src={Pencil} className="pincel"></img>
-                        </div>
-                    </div>
-                    </Link>
-                    </div> 
+                ))}
+                </div>
             </div> 
         </div>
     );
 }
 
-export default ServicosC;
+export default ServicosHTMLC;

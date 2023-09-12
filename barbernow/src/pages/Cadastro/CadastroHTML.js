@@ -54,7 +54,7 @@ function CadastroHTML(props) {
                 name="nome"
                 id="nome"
                 className="input-cadastro"
-                onChange={(e) => props.setName(e.target.value)}
+                onChange={(e) => props.setNome(e.target.value)}
               />
               <label>Nome da barbearia *</label>
             </div>
@@ -89,7 +89,7 @@ function CadastroHTML(props) {
                   name="password"
                   id="password"
                   className="input-cadastro"
-                  onChange={(e) => props.setPassword(e.target.value)}
+                  onChange={(e) => props.setSenha(e.target.value)}
                 />
                 <label>Senha *</label>
               </div>
@@ -99,7 +99,7 @@ function CadastroHTML(props) {
                   name="password"
                   id="password"
                   className="input-cadastro"
-                  onChange={(e) => props.setPassword(e.target.value)}
+                  onChange={(e) => props.setSenha(e.target.value)}
                 />
                 <label>Repetir senha *</label>
               </div>
@@ -120,7 +120,7 @@ function CadastroHTML(props) {
                 name="cnpj" 
                 id="cnpj" 
                 className="input-cadastro"
-                onChange={(e) => props.setCNPJ(e.target.value)} 
+                onChange={(e) => props.setCnpj(e.target.value)} 
                 />
               <label>CNPJ *</label>
             </div>

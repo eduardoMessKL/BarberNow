@@ -5,7 +5,19 @@ import userIcon from "../../../assets/User Icon.png"
 import { Link } from "react-router-dom";
 import FotoCorte from "../../../assets/FotoCorte.png"
 
-function AddServicosHTML() {
+function AddServicosHTML({
+  nomeCorte,
+  setNomeCorte,
+  descricaoCorte,
+  setDescricaoCorte,
+  preco,
+  setPreco,
+  duracao,
+  setDuracao,
+  tipoServico,
+  setTipoServico,
+  adicionarServico
+}) {
   return (
     <div className="container-addservicos">
       {/*----HEDAER----*/}
@@ -49,50 +61,49 @@ function AddServicosHTML() {
             </div>
             <div className="card-addServ-R">
             <div className="div-input-cadastro">
-              <input
-                type="text"
-                name="nome"
-                id="nome"
-                className="input-cadastro"
-              />
-              <label>Nome do corte *</label>
-              <input
-                type="text"
-                name="nome"
-                id="nome"
-                className="input-cadastro"
-              />
-              <label>Breve descrição sobre o corte *</label>
-              <input
-                type="text"
-                name="nome"
-                id="nome"
-                className="input-cadastro"
-              />
-              <label>Preço *</label>
-              <div>
-                <section>
-                  <input
-                    type="text"
-                    name="nome"
-                    id="nome"
-                    className="input-cadastro"
-                  />
-                  <label>Duração *</label>
-                </section>
-                <section>
-                  <input
-                    type="text"
-                    name="nome"
-                    id="nome"
-                    className="input-cadastro"
-                  />
-                  <label>Tipo de serviço*</label>
-                </section>
-              </div>
-              <button className="botao-adicionar">
-                <h1>ADICIONAR</h1>
-              </button>
+            <input
+              type="text"
+              value={nomeCorte}
+              onChange={(e) => setNomeCorte(e.target.value)}
+              className="input-cadastro"
+            />
+            <label>Nome do corte *</label>
+
+            <input
+              type="text"
+              value={descricaoCorte}
+              onChange={(e) => setDescricaoCorte(e.target.value)}
+              className="input-cadastro"
+            />
+            <label>Breve descrição sobre o corte *</label>
+
+            <input
+              type="text"
+              value={preco}
+              onChange={(e) => setPreco(e.target.value)}
+              className="input-cadastro"
+            />
+            <label>Preço *</label>
+
+            <input
+              type="text"
+              value={duracao}
+              onChange={(e) => setDuracao(e.target.value)}
+              className="input-cadastro"
+            />
+            <label>Duração *</label>
+
+            <input
+              type="text"
+              value={tipoServico}
+              onChange={(e) => setTipoServico(e.target.value)}
+              className="input-cadastro"
+            />
+            <label>Tipo de serviço*</label>
+            
+            <button className="botao-adicionar" onClick={adicionarServico}>
+              <h1>ADICIONAR</h1>
+            </button>
             </div>
             </div>
         </section>
