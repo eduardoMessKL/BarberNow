@@ -78,3 +78,28 @@ export const addServicoToFirestore = async (cnpj, data) => {
   }
 };
 
+export const getStoredPassword = async (cnpj) => {
+  try {
+    const barbeariaDoc = await getFirestore.collection('barbearias').doc(cnpj).get();
+    if (!barbeariaDoc.exists) {
+      throw new Error('Barbearia não encontrada!');
+    }
+    const barbeariaData = barbeariaDoc.data();
+    return barbeariaData.password; // Supondo que 'password' é o nome do campo onde a senha é armazenada.
+  } catch (error) {
+    console.error("Erro ao obter senha:", error);
+    throw error;
+  }
+};
+
+export const updatePassword = async (cnpj, newPassword) => {
+  try {
+    await getFirestore.collection('barbearias').doc(cnpj).update({
+      password: newPassword
+    });
+  } catch (error) {
+    console.error("Erro ao atualizar senha:", error);
+    throw error;
+  }
+};
+
