@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import PerfilEHTML from "./PerfilEHTML";
 import "./PerfilE.css";
-import { getBarbearia, updateBarbearia } from "../../../model/services/BarbeariaService"; // Substitua isso pela sua importação real
+import { getBarbearia, updateBarbearia } from "../../../model/services/BarbeariaService"; 
 
 export function PerfilE(){
     const [barbearia, setBarbearia] = useState({});
