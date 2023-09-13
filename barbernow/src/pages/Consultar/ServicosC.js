@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getServico } from '../../model/services/ServicoService'; // Ajuste o caminho conforme necessário
+import { getServicosByBarbearia } from '../../model/services/ServicoService'; // Importe a nova função
 import { getBarbearia } from "../../model/services/BarbeariaService";
 import { useParams } from "react-router-dom";
 import ServicosHTMLC from "./ServicosHTMLC";
@@ -13,7 +13,7 @@ export function ServicosC() {
     useEffect(() => {
       async function fetchData() {
           try {
-              const servicosData = await getServico(cnpj);
+              const servicosData = await getServicosByBarbearia(cnpj);
               const barbeariaData = await getBarbearia(cnpj);
 
               setServicos(servicosData);
@@ -28,3 +28,4 @@ export function ServicosC() {
 
     return <ServicosHTMLC servicos={servicos} barbearia={barbearia} />;
 }
+

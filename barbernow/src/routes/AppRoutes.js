@@ -28,8 +28,8 @@ export function AppRoutes(){
 
                 <Route path="/servicos/:cnpj" element={<ServicosC/>} />
                 <Route path = "/add-servico/:cnpj" element = {<AddServicos/>}/>
-                <Route path = "/editar-servico" element = {<ServicosE/>}/>
-                <Route path = "/consultar-servico" element = {<ServicosC/>}/>
+                <Route path = "/editar-servico/:cnpj/:servicoID" element = {<ServicosE/>}/>
+                <Route path = "/consultar-servico/:cnpj" element = {<ServicosC/>}/>
 
                 <Route path ="/senha" element = {<Senha/>}/>
             </Routes>     

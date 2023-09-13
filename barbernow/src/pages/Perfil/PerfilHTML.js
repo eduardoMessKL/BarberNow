@@ -83,7 +83,7 @@ export function PerfilHTML({barbearia} ){
                             <img src={Adicionar}></img>
                         </button>
                     </Link>
-                        <Link to='/consultar-servico'>
+                        <Link to={`/consultar-servico/${barbearia.cnpj}`}>
                         <button className="botao-consultarServicos">
                             <h3>CONSULTAR SERVICOS</h3>
                             <img src={Pencil}></img>

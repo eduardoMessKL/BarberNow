@@ -96,3 +96,24 @@ export async function getAllServicos(cnpj) {
     console.error("Error fetching services: ", e);
   }
 }
+
+export const getServicosByBarbearia = async (cnpj) => {
+  try {
+      const servicosSnapshot = await getDocs(
+        collection(db, "barbearias", cnpj, "servicos")
+      );
+      
+      const servicos = [];
+      servicosSnapshot.forEach(doc => {
+          servicos.push({
+              id: doc.id,
+              ...doc.data()
+          });
+      });
+
+      return servicos;
+  } catch (error) {
+      console.error("Erro ao buscar serviços: ", error);
+      throw error;
+  }
+}

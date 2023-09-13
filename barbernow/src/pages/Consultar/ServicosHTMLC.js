@@ -2,7 +2,6 @@ import React from "react";
 import arrow from "../../assets/Arrow Black.png";
 import logoimg from "../../assets/Logo/LogoBranca.png";
 import CorteCabelo from "../../assets/CorteCabelo.png"
-import logotipo from "../../assets/Logotipo.png"
 import Pencil from "../../assets/Elements/Pencil.png"
 import Wpp from "../../assets/Elements/WhatsApp.png"
 
@@ -26,7 +25,7 @@ function ServicosHTMLC({ servicos, barbearia}){
                 <Link to="/" className="botao-link">INÍCIO</Link>
                 </button>
                 <button className='botao-header'>
-                <Link to="/perfil" className="botao-link">PERFIL</Link>
+                <Link to={`/perfil/${barbearia.cnpj}`} className="botao-link">PERFIL</Link>
                 </button>
             </div>
             </header>
@@ -35,14 +34,14 @@ function ServicosHTMLC({ servicos, barbearia}){
                     {/*----ARROW----*/}
                     <div className='card-login-arrow'>
                         <button className='botao-arrow'>
-                        <Link to="/perfil">
+                        <Link to={`/perfil/${barbearia.cnpj}`}>
                         <img src={arrow} className='arrow' alt='arrow'></img>
                         </Link>
                         </button>
                     </div>
                     <div className="dados-barbearia">
                         <div className="dados-barbeariaL">
-                            <img src={logotipo}></img>
+                            <img src={barbearia.fotoURL}></img>
                             <button className="entrar-contato">
                                 ENTRAR EM CONTATO
                                 <img src={Wpp} className="wpp"></img>
@@ -58,10 +57,10 @@ function ServicosHTMLC({ servicos, barbearia}){
                 </div>
                 <div className="servicos-barbearia">
                     {servicos.map(servico => (
-                    <Link to={'/editar-servico'} key={servico.id}>
+                    <Link to={`/editar-servico/${barbearia.cnpj}/${servico.id}`} key={servico.id}>
                         <div className="card-servico">
                             <div className="card-servicoL">
-                                <img src={CorteCabelo} className="CorteCabelo" alt="logotipo-barbearia"></img>
+                                <img src={servico.fotoURL} className="CorteCabelo" alt="logotipo-barbearia"></img>
                             </div>
                             <div className="card-servicoR">
                                 <h1>{servico.nome}</h1>
