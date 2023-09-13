@@ -26,7 +26,7 @@ export function AppRoutes(){
                 <Route path="/perfil/:cnpj" element={<Perfil />} />
                 <Route path = "/editar-perfil" element = {<PerfilE/>}/>
 
-                <Route path="/servicos/:cnpj" element={<ServicosC/>} />
+                <Route path="/servicos/:cnpj" element={<Servicos/>} />
                 <Route path = "/add-servico/:cnpj" element = {<AddServicos/>}/>
                 <Route path = "/editar-servico/:cnpj/:servicoID" element = {<ServicosE/>}/>
                 <Route path = "/consultar-servico/:cnpj" element = {<ServicosC/>}/>
