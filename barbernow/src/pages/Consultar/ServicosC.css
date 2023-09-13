@@ -32,6 +32,19 @@
     margin-bottom: 2.5rem;
 }
 
+.dados-barbeariaR h3{
+    font-weight: 100;
+    font-size: 1.7rem;
+}
+
+.dados-barbeariaR h1{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.dados-barbeariaR h1{
+}
+
 .servicos-barbearia{
     width: 65%;
     display: grid;
@@ -72,7 +85,7 @@
 }
 
 .CorteCabelo{
-    margin-left: 10%;
+    margin: 10%;
     height: 9rem;
     border-radius: 3px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);

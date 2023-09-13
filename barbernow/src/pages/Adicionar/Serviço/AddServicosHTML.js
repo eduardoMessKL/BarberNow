@@ -46,13 +46,7 @@ function AddServicosHTML(props) {
               accept="image/*"
               onChange={(e) => props.setImageFile(e.target.files[0])}
             />
-            <h3>
-              Clique{" "}
-              <Link to="/" className="aqui-serv">
-                aqui
-              </Link>{" "}
-              para enviar.
-            </h3>
+            <h3>Envie a foto do corte</h3>
           </div>
           <div className="card-addServ-R">
             <div className="div-input-cadastro">

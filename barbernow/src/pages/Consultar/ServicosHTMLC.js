@@ -65,7 +65,7 @@ function ServicosHTMLC({ servicos, barbearia}){
                             <div className="card-servicoR">
                                 <h1>{servico.nome}</h1>
                                 <h3>{servico.descricao}</h3>
-                                <h2>{servico.preco}</h2>
+                                <h2>R$ {servico.preco}</h2>
                                 <h3>{servico.duracao}</h3>
                             </div>
                             <div className="div-pincel">

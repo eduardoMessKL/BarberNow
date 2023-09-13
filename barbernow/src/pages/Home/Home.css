@@ -216,12 +216,13 @@ header{
 }
 
 .logotipo{
-    margin-left: 1.35rem;
+    margin: 1.35rem;
     height: 11rem;
+    border-radius: 10px;
 }
 
 .card-barbearia h3{
-    font-size: medium;
+    font-size: 1.5rem;
     font-weight: 100;
     margin-top: 1rem;
     margin-bottom: 1rem;

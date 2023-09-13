@@ -54,7 +54,8 @@ body, .html{
 }
 
 .card-topM img{
-    height: 30vh;
+    height: 20rem;
+    max-height: 20rem;
 }
 
 .card-top, .card-bottom{

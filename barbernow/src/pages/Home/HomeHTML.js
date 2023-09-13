@@ -21,7 +21,7 @@ export function HomeHTML({ barbearias, onOrderByName, onOrderByPriceMax }) {
                         REGISTRAR-SE
                     </button>
                     </Link>
-                    <Link to="/login" className="botao-link">L
+                    <Link to="/login" className="botao-link">
                     <button className='botao-header'>
                         LOGIN
                     </button>
@@ -31,8 +31,8 @@ export function HomeHTML({ barbearias, onOrderByName, onOrderByPriceMax }) {
         <div className="div-inf-home">
           {/* ... Parte das informações ... */}
           <h1>As melhores barbearias <br/> reunidas em um só lugar.</h1>
-                <br/>
-                <h1>Descubra barbearias em sua <br/> região com o BarberNow!</h1>
+          <br/>
+          <h1>Descubra barbearias em sua <br/> região com o BarberNow!</h1>
         </div>
         <div className="div-inf-home2">
           <h1 className="filtro-txt">Escolha o tipo de serviço que deseja realizar:</h1>
