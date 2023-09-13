@@ -15,8 +15,6 @@ import { uploadImageAndGetURL } from "./firestoreService";
 import { Barbearia } from "../entities/Barbearia";
 import { db } from "../../firebase/firebaseConfig";
 
-const database = getFirestore(app);
-
 //funções CRUD Barbearia
 export async function createBarbearia(barbeariaData, file) {
   try {
@@ -40,10 +38,7 @@ export async function createBarbearia(barbeariaData, file) {
         return;
       }
     }
-    await setDoc(
-      doc(database, "barbearias", barbearia.cnpj),
-      barbearia.toObject()
-    );
+    await setDoc(doc(db, "barbearias", barbearia.cnpj), barbearia.toObject());
   } catch (e) {
     console.error("Error adding document: ", e);
     throw e; // Rejeita a promessa para que você possa capturar esse erro mais tarde
@@ -52,7 +47,7 @@ export async function createBarbearia(barbeariaData, file) {
 
 export async function getBarbearia(cnpj) {
   try {
-    const docRef = doc(database, "barbearias", cnpj);
+    const docRef = doc(db, "barbearias", cnpj);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       return docSnap.data();
@@ -65,17 +60,25 @@ export async function getBarbearia(cnpj) {
 }
 
 export async function updateBarbearia(cnpj, updateData) {
+  if (!updateData || typeof updateData !== "object") {
+    console.error("updateData is not valid:", updateData);
+    return { success: false, message: "Update data is not valid." };
+  }
   try {
-    const docRef = doc(database, "barbearias", cnpj);
+    const docRef = doc(db, "barbearias", String(cnpj));
+
     await updateDoc(docRef, updateData);
+
+    return { success: true, message: "Document successfully updated!" };
   } catch (e) {
     console.error("Error updating document: ", e);
+    return { success: false, message: e.message };
   }
 }
 
 export async function deleteBarbearia(cnpj) {
   try {
-    await deleteDoc(doc(database, "barbearias", cnpj));
+    await deleteDoc(doc(db, "barbearias", cnpj));
   } catch (e) {
     console.error("Error deleting document: ", e);
   }

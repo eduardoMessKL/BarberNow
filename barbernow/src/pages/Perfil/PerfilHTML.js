@@ -34,12 +34,12 @@ export function PerfilHTML({barbearia} ){
                     {/*CARD PARTE DE CIMA*/}
                     <div className="card-top">
                         <div className="card-topL">
-                            <Link to={'/editar-perfil'}>
+                            <Link to={`/editar-perfil/${barbearia.cnpj}`}>
                             <h3>Editar <br/>Perfil<br/></h3>
                             <img src={Pencil}></img>
                             </Link>
                             <br/>
-                            <Link to={'/senha'}>
+                            <Link to={`/senha/${barbearia.cnpj}`}>
                             <h3>Editar <br/>Senha<br/></h3>
                             <img src={Pencil}></img>
                             </Link>

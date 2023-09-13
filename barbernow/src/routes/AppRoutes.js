@@ -24,14 +24,14 @@ export function AppRoutes(){
                 <Route path = "/erro" element = {<Erro/>}/>
 
                 <Route path="/perfil/:cnpj" element={<Perfil />} />
-                <Route path = "/editar-perfil" element = {<PerfilE/>}/>
+                <Route path = "/editar-perfil/:cnpj" element = {<PerfilE/>}/>
 
                 <Route path="/servicos/:cnpj" element={<Servicos/>} />
                 <Route path = "/add-servico/:cnpj" element = {<AddServicos/>}/>
                 <Route path = "/editar-servico/:cnpj/:servicoID" element = {<ServicosE/>}/>
                 <Route path = "/consultar-servico/:cnpj" element = {<ServicosC/>}/>
 
-                <Route path ="/senha" element = {<Senha/>}/>
+                <Route path ="/senha/:cnpj" element = {<Senha/>}/>
             </Routes>     
         </BrowserRouter>     
     );
