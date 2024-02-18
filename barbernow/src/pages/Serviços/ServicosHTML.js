@@ -26,11 +26,11 @@ function ServicosHTML({ servicos, barbearia }) {
               INÍCIO
             </Link>
           </button>
-          <button className="botao-header">
+          {/* <button className="botao-header">
             <Link to={`/perfil/${barbearia.cnpj}`} className="botao-link">
               PERFIL
             </Link>
-          </button>
+          </button> */}
         </div>
       </header>
       <div className="div-inf-Servicos">
@@ -46,10 +46,14 @@ function ServicosHTML({ servicos, barbearia }) {
           <div className="dados-barbearia">
             <div className="dados-barbeariaL">
               <img src={barbearia.fotoURL}></img>
-              <button className="entrar-contato">
-                ENTRAR EM CONTATO
-                <img src={Wpp} className="wpp"></img>
-              </button>
+              <Link
+                to={`https://wa.me/55${barbearia.telefone}?text=Ol%C3%A1%21%20Quero%20agendar%20um%20corte%21`}
+              >
+                <button className="entrar-contato">
+                  ENTRAR EM CONTATO
+                  <img src={Wpp} className="wpp"></img>
+                </button>
+              </Link>
             </div>
             <div className="dados-barbeariaR">
               <h1>{barbearia.nome}</h1>
@@ -75,9 +79,7 @@ function ServicosHTML({ servicos, barbearia }) {
                 <h2>R$ {servico.preco}</h2>
                 <h3>{servico.duracao}</h3>
               </div>
-              <div className="div-pincel">
-                
-              </div>
+              <div className="div-pincel"></div>
             </div>
           ))}
         </div>
