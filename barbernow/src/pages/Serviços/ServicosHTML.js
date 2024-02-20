@@ -4,7 +4,7 @@ import logoimg from "../../assets/Logo/LogoBranca.png";
 import CorteCabelo from "../../assets/CorteCabelo.png";
 import Pencil from "../../assets/Elements/Pencil.png";
 import Wpp from "../../assets/Elements/WhatsApp.png";
-
+import maps from "../../assets/maps.png";
 import { Link } from "react-router-dom";
 
 function ServicosHTML({ servicos, barbearia }) {
@@ -26,11 +26,6 @@ function ServicosHTML({ servicos, barbearia }) {
               INÍCIO
             </Link>
           </button>
-          {/* <button className="botao-header">
-            <Link to={`/perfil/${barbearia.cnpj}`} className="botao-link">
-              PERFIL
-            </Link>
-          </button> */}
         </div>
       </header>
       <div className="div-inf-Servicos">
@@ -48,6 +43,8 @@ function ServicosHTML({ servicos, barbearia }) {
               <img src={barbearia.fotoURL}></img>
               <Link
                 to={`https://wa.me/55${barbearia.telefone}?text=Ol%C3%A1%21%20Quero%20agendar%20um%20corte%21`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <button className="entrar-contato">
                   ENTRAR EM CONTATO
@@ -60,6 +57,15 @@ function ServicosHTML({ servicos, barbearia }) {
               <h3>{barbearia.endereco}</h3>
               <h3>{barbearia.telefone}</h3>
               <h3>{barbearia.horario}</h3>
+              <h3>
+                <Link
+                  to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(barbearia.nome + ' ' + barbearia.endereco)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={maps} className="maps_logo" alt="maps" />
+                </Link>
+              </h3>
             </div>
           </div>
         </div>

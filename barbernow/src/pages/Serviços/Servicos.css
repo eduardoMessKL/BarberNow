@@ -8,3 +8,7 @@
     filter: blur(0px);
     backdrop-filter: blur(26px);
 }
+
+.maps_logo{
+    height: 10vh;
+}
