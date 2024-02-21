@@ -99,21 +99,51 @@ export async function getAllServicos(cnpj) {
 
 export const getServicosByBarbearia = async (cnpj) => {
   try {
+    const servicosSnapshot = await getDocs(
+      collection(db, "barbearias", cnpj, "servicos")
+    );
+
+    const servicos = [];
+    servicosSnapshot.forEach((doc) => {
+      servicos.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+
+    return servicos;
+  } catch (error) {
+    console.error("Erro ao buscar serviços: ", error);
+    throw error;
+  }
+};
+
+export async function getMinMaxPrices(cnpjs) {
+  const minMaxPrices = {};
+
+  for (const cnpj of cnpjs) {
+    try {
       const servicosSnapshot = await getDocs(
         collection(db, "barbearias", cnpj, "servicos")
       );
-      
-      const servicos = [];
-      servicosSnapshot.forEach(doc => {
-          servicos.push({
-              id: doc.id,
-              ...doc.data()
-          });
+
+      let minPrice = Infinity;
+      let maxPrice = -Infinity;
+
+      servicosSnapshot.forEach((doc) => {
+        const servico = doc.data();
+        minPrice = Math.min(minPrice, servico.preco);
+        maxPrice = Math.max(maxPrice, servico.preco);
       });
 
-      return servicos;
-  } catch (error) {
-      console.error("Erro ao buscar serviços: ", error);
-      throw error;
+      minMaxPrices[cnpj] = { minPrice, maxPrice };
+    } catch (error) {
+      console.error(
+        `Erro ao buscar preços mínimos e máximos para CNPJ ${cnpj}: `,
+        error
+      );
+    }
   }
+
+  return minMaxPrices;
 }

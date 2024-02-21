@@ -57,6 +57,7 @@ function ServicosHTML({ servicos, barbearia }) {
               <h3>{barbearia.endereco}</h3>
               <h3>{barbearia.telefone}</h3>
               <h3>{barbearia.horario}</h3>
+              <br/>
               <h3>
                 <Link
                   to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(barbearia.nome + ' ' + barbearia.endereco)}`}

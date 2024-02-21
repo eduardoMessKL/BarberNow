@@ -32,6 +32,7 @@ export function Login() {
           const cnpj = userData.cnpj;
           navigate(`/perfil/${cnpj}`);
         } else {
+          alert("Erro ao fazer login: usuário não encontrado")
           console.error("No user found with the given email in barbearias collection");
         }
       }
