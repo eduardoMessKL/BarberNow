@@ -5,7 +5,6 @@ import AZ from "../../assets/Elements/AZ.png";
 import ZA from "../../assets/Elements/ZA.png";
 import baratocaro from "../../assets/Elements/12.png";
 import carobarato from "../../assets/Elements/21.png";
-import logotipo from "../../assets/Logotipo.png";
 import { getMinMaxPrices } from "../../model/services/ServicoService";
 
 export function HomeHTML({ barbearias, onOrderByName, onOrderByPriceMax }) {
@@ -102,9 +101,12 @@ export function HomeHTML({ barbearias, onOrderByName, onOrderByPriceMax }) {
                     {barbearia.telefone}
                   </h3>
                   <h2>
-                    Menor preço: R${minMaxPrices[barbearia.cnpj]?.minPrice}
-                    <br />
-                    Maior preço: R${minMaxPrices[barbearia.cnpj]?.maxPrice}
+                    {minMaxPrices[barbearia.cnpj]?.minPrice !== undefined &&
+                    minMaxPrices[barbearia.cnpj]?.maxPrice !== undefined
+                      ? `↓R$${minMaxPrices[barbearia.cnpj].minPrice} - ↑R$${
+                          minMaxPrices[barbearia.cnpj].maxPrice
+                        }`
+                      : "Serviços não disponíveis"}
                   </h2>
                 </div>
               </div>

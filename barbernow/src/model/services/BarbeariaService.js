@@ -1,19 +1,16 @@
 import {
-  getFirestore,
   doc,
   setDoc,
   getDoc,
   updateDoc,
   deleteDoc,
-  query,
-  where,
   getDocs,
   collection,
 } from "firebase/firestore";
-import { app } from "../../firebase/firebaseConfig";
 import { uploadImageAndGetURL } from "./firestoreService";
 import { Barbearia } from "../entities/Barbearia";
 import { db } from "../../firebase/firebaseConfig";
+import { getMinMaxPrices } from "./ServicoService";
 
 //funções CRUD Barbearia
 export async function createBarbearia(barbeariaData, file) {
@@ -106,6 +103,17 @@ export const orderByName = async (reverse = false) => {
 
 export const orderByPriceMax = async (reverse = false) => {
   let barbearias = await getAllBarbearias();
+
+  const cnpjs = barbearias.map((barbearia) => barbearia.cnpj);
+
+  const prices = await getMinMaxPrices(cnpjs);
+
+  barbearias = barbearias.map((barbearia) => ({
+    ...barbearia,
+    precoMin: prices[barbearia.cnpj]?.minPrice,
+    precoMax: prices[barbearia.cnpj]?.maxPrice,
+  }));
+
   return barbearias.sort((a, b) => {
     if (!reverse) {
       return parseFloat(a.precoMax) - parseFloat(b.precoMax);
