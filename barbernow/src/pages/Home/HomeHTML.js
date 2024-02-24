@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../../assets/Logo/LogoBranca.png";
 import AZ from "../../assets/Elements/AZ.png";
 import ZA from "../../assets/Elements/ZA.png";
 import baratocaro from "../../assets/Elements/12.png";
 import carobarato from "../../assets/Elements/21.png";
-import { getMinMaxPrices } from "../../model/services/ServicoService";
 
-export function HomeHTML({ barbearias, onOrderByName, onOrderByPriceMax }) {
-  const [minMaxPrices, setMinMaxPrices] = useState({
-    minPrice: null,
-    maxPrice: null,
-  });
-
-  useEffect(() => {
-    const fetchPrices = async () => {
-      const cnpjs = barbearias.map((barbearia) => barbearia.cnpj);
-      const prices = await getMinMaxPrices(cnpjs);
-      setMinMaxPrices(prices);
-    };
-
-    fetchPrices();
-  }, [barbearias]);
-
+export function HomeHTML({
+  barbearias,
+  onOrderByName,
+  onOrderByPriceMax,
+  minMaxPrices,
+}) {
   return (
     <div className="container-home">
       <header className="header">
