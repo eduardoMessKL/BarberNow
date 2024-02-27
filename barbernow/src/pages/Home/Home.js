@@ -10,7 +10,6 @@ import { getMinMaxPrices } from "../../model/services/ServicoService";
 
 export function Home() {
   const [barbearias, setBarbearias] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [minMaxPrices, setMinMaxPrices] = useState({});
   const [tipoServico, setTipoServico] = useState("Cabelo");
@@ -48,7 +47,6 @@ export function Home() {
     fetchPrices();
   }, [barbearias, tipoServico]); // Adiciona tipoServico como dependência
 
-  if (loading) return <p>Carregando...</p>; // Indicador de carregamento
   if (error) return <p>Erro ao carregar dados: {error.message}</p>; // Mensagem de erro
 
   const handleOrderByName = async (reverse = false) => {

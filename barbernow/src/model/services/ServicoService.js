@@ -6,7 +6,6 @@ import {
   updateDoc,
   deleteDoc,
   collection,
-  addDoc,
   getDocs,
 } from "firebase/firestore";
 import { app } from "../../firebase/firebaseConfig";
@@ -22,7 +21,6 @@ export async function createServico(cnpj, servicoData, file) {
     const newDocRef = doc(collection(db, "barbearias", cnpj, "servicos"));
     servicoData.servicoID = newDocRef.id; // Aqui estamos pegando o ID gerado e usando-o em nossos dados.
 
-    // Crie uma instância da classe Servico
     const servico = new Servico(
       servicoData.servicoID,
       servicoData.nome,
