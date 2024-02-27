@@ -1,11 +1,9 @@
 import React from "react";
 import arrow from "../../assets/Arrow Black.png";
 import logoimg from "../../assets/Logo/LogoBranca.png";
-import CorteCabelo from "../../assets/CorteCabelo.png";
-import Pencil from "../../assets/Elements/Pencil.png";
 import Wpp from "../../assets/Elements/WhatsApp.png";
-import maps from "../../assets/maps.png";
 import { Link } from "react-router-dom";
+import Home from "../../assets/Elements/casa.png";
 
 function ServicosHTML({ servicos, barbearia }) {
   return (
@@ -40,7 +38,7 @@ function ServicosHTML({ servicos, barbearia }) {
           </div>
           <div className="dados-barbearia">
             <div className="dados-barbeariaL">
-              <img src={barbearia.fotoURL}></img>
+              <img src={barbearia.fotoURL} className="img-logo"></img>
               <Link
                 to={`https://wa.me/55${barbearia.telefone}?text=Ol%C3%A1%21%20Quero%20agendar%20um%20corte%21`}
                 target="_blank"
@@ -51,22 +49,25 @@ function ServicosHTML({ servicos, barbearia }) {
                   <img src={Wpp} className="wpp"></img>
                 </button>
               </Link>
+              <Link
+                to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  barbearia.nome + " " + barbearia.endereco
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="entrar-contato">
+                  LOCALIZAR
+                  <img src={Home}></img>
+                </button>
+              </Link>
             </div>
             <div className="dados-barbeariaR">
               <h1>{barbearia.nome}</h1>
               <h3>{barbearia.endereco}</h3>
               <h3>{barbearia.telefone}</h3>
               <h3>{barbearia.horario}</h3>
-              <br/>
-              <h3>
-                <Link
-                  to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(barbearia.nome + ' ' + barbearia.endereco)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={maps} className="maps_logo" alt="maps" />
-                </Link>
-              </h3>
+              <br />
             </div>
           </div>
         </div>
