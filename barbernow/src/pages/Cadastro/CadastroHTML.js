@@ -63,13 +63,14 @@ function CadastroHTML(props, {barbearia}) {
 
             <div className="div-input-cadastro">
               <input
-                type="text"
+                type="number"
                 name="telefone"
                 id="telefone"
                 className="input-cadastro"
                 onChange={(e) => props.setTelefone(e.target.value)}
               />
               <label>Telefone para contato * </label>
+              <label>(Somente números)</label>
             </div>
           </div>
           {/*----CADASTRO LADO DIREITO----*/}
