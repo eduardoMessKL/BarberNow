@@ -107,20 +107,31 @@ export const orderByPriceMin = async (
   barbearias
 ) => {
   const cnpjs = barbearias.map((barbearia) => barbearia.cnpj);
-
   const prices = await getMinMaxPrices(cnpjs, tipoServico);
 
-  barbearias = barbearias.map((barbearia) => ({
+  // Atualiza as barbearias com os preços mínimos e máximos
+  const updatedBarbearias = barbearias.map((barbearia) => ({
     ...barbearia,
-    precoMin: prices[barbearia.cnpj]?.minPrice,
-    precoMax: prices[barbearia.cnpj]?.maxPrice,
+    precoMin:
+      prices[barbearia.cnpj]?.minPrice || (reverse ? Infinity : -Infinity),
+    precoMax:
+      prices[barbearia.cnpj]?.maxPrice || (reverse ? -Infinity : Infinity),
   }));
 
-  return barbearias.sort((a, b) => {
-    if (!reverse) {
-      return a.precoMin - b.precoMin;
+  // Ordena as barbearias com base nos preços mínimos e máximos
+  return updatedBarbearias.sort((a, b) => {
+    // Se ambas as barbearias não têm o serviço, coloca por último
+    if (a.precoMin === Infinity && b.precoMin === Infinity) {
+      return 0;
+    } else if (a.precoMin === Infinity) {
+      // Se a barbearia A não tem o serviço, coloca por último
+      return 1;
+    } else if (b.precoMin === Infinity) {
+      // Se a barbearia B não tem o serviço, coloca por último
+      return -1;
     } else {
-      return b.precoMin - a.precoMin;
+      // Se ambas as barbearias têm o serviço, compara os preços
+      return reverse ? b.precoMin - a.precoMin : a.precoMin - b.precoMin;
     }
   });
 };
