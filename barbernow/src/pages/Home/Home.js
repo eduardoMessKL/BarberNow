@@ -27,10 +27,8 @@ export function Home() {
       try {
         const data = await getAllBarbearias();
         setBarbearias(data);
-        setLoading(false);
       } catch (err) {
         setError(err);
-        setLoading(false);
       }
     };
 
