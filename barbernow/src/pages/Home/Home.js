@@ -13,6 +13,7 @@ export function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [minMaxPrices, setMinMaxPrices] = useState({});
+  const [tipoServico, setTipoServico] = useState("Cabelo");
 
   useEffect(() => {
     async function fetchData() {
@@ -40,12 +41,12 @@ export function Home() {
   useEffect(() => {
     const fetchPrices = async () => {
       const cnpjs = barbearias.map((barbearia) => barbearia.cnpj);
-      const prices = await getMinMaxPrices(cnpjs);
+      const prices = await getMinMaxPrices(cnpjs, tipoServico);
       setMinMaxPrices(prices);
     };
 
     fetchPrices();
-  }, [barbearias]);
+  }, [barbearias, tipoServico]); // Adiciona tipoServico como dependência
 
   if (loading) return <p>Carregando...</p>; // Indicador de carregamento
   if (error) return <p>Erro ao carregar dados: {error.message}</p>; // Mensagem de erro
@@ -56,7 +57,7 @@ export function Home() {
   };
 
   const handleOrderByPriceMax = async (reverse = false) => {
-    const orderedBarbearias = await orderByPriceMax(reverse);
+    const orderedBarbearias = await orderByPriceMax(reverse, tipoServico);
     setBarbearias(orderedBarbearias);
   };
 
@@ -67,6 +68,8 @@ export function Home() {
         onOrderByName={handleOrderByName}
         onOrderByPriceMax={handleOrderByPriceMax}
         minMaxPrices={minMaxPrices}
+        setTipoServico={setTipoServico}
+        tipoServico={tipoServico}
       />
     </div>
   );

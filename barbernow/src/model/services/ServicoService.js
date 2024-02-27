@@ -118,11 +118,12 @@ export const getServicosByBarbearia = async (cnpj) => {
   }
 };
 
-export async function getMinMaxPrices(cnpjs) {
+export async function getMinMaxPrices(cnpjs, tipoServico) {
   const minMaxPrices = {};
 
   for (const cnpj of cnpjs) {
     try {
+      // Acessa a subcoleção de serviços de cada barbearia
       const servicosSnapshot = await getDocs(
         collection(db, "barbearias", cnpj, "servicos")
       );
@@ -132,8 +133,11 @@ export async function getMinMaxPrices(cnpjs) {
 
       servicosSnapshot.forEach((doc) => {
         const servico = doc.data();
-        minPrice = Math.min(minPrice, servico.preco);
-        maxPrice = Math.max(maxPrice, servico.preco);
+        // Filtra os serviços pelo tipo de serviço
+        if (servico.tipo === tipoServico) {
+          minPrice = Math.min(minPrice, servico.preco);
+          maxPrice = Math.max(maxPrice, servico.preco);
+        }
       });
 
       minMaxPrices[cnpj] = { minPrice, maxPrice };

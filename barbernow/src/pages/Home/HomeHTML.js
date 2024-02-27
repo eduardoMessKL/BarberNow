@@ -11,6 +11,8 @@ export function HomeHTML({
   onOrderByName,
   onOrderByPriceMax,
   minMaxPrices,
+  setTipoServico,
+  tipoServico,
 }) {
   return (
     <div className="container-home">
@@ -49,9 +51,11 @@ export function HomeHTML({
         </h1>
         {/* ... Parte dos filtros ... */}
         <div className="filtro">
-          <button>CABELO</button>
-          <button>BARBA</button>
-          <button>SOBRANCELHA</button>
+          <button onClick={() => setTipoServico("Cabelo")}>Cabelo</button>
+          <button onClick={() => setTipoServico("Barba")}>Barba</button>
+          <button onClick={() => setTipoServico("Sobrancelha")}>
+            Sobrancelha
+          </button>
         </div>
         <div className="ordenar">
           <h1>Barbearias:</h1>
@@ -90,12 +94,15 @@ export function HomeHTML({
                     {barbearia.telefone}
                   </h3>
                   <h2>
-                    {minMaxPrices[barbearia.cnpj]?.minPrice !== undefined &&
-                    minMaxPrices[barbearia.cnpj]?.maxPrice !== undefined
-                      ? `↓R$${minMaxPrices[barbearia.cnpj].minPrice} - ↑R$${
-                          minMaxPrices[barbearia.cnpj].maxPrice
-                        }`
-                      : "Serviços não disponíveis"}
+                    <h2>
+                      {minMaxPrices[barbearia.cnpj] &&
+                      minMaxPrices[barbearia.cnpj]?.minPrice !== Infinity &&
+                      minMaxPrices[barbearia.cnpj]?.maxPrice !== -Infinity
+                        ? `↓R$${minMaxPrices[barbearia.cnpj].minPrice} -  ↑R$${
+                            minMaxPrices[barbearia.cnpj].maxPrice
+                          }`
+                        : "Serviços não disponíveis"}
+                    </h2>
                   </h2>
                 </div>
               </div>
