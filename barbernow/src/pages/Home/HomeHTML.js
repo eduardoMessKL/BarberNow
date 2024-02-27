@@ -9,7 +9,7 @@ import carobarato from "../../assets/Elements/21.png";
 export function HomeHTML({
   barbearias,
   onOrderByName,
-  onOrderByPriceMax,
+  onOrderByPriceMin,
   minMaxPrices,
   setTipoServico,
   tipoServico,
@@ -47,7 +47,7 @@ export function HomeHTML({
       </div>
       <div className="div-inf-home2">
         <h1 className="filtro-txt">
-          Escolha o tipo de serviço que deseja realizar:
+          Escolha o tipo de serviço que deseja realizar: {tipoServico}
         </h1>
         {/* ... Parte dos filtros ... */}
         <div className="filtro">
@@ -67,10 +67,10 @@ export function HomeHTML({
             <button onClick={() => onOrderByName(true)}>
               <img src={ZA}></img>
             </button>
-            <button onClick={() => onOrderByPriceMax(false)}>
+            <button onClick={() => onOrderByPriceMin(false)}>
               <img src={baratocaro}></img>
             </button>
-            <button onClick={() => onOrderByPriceMax(true)}>
+            <button onClick={() => onOrderByPriceMin(true)}>
               <img src={carobarato}></img>
             </button>
           </div>

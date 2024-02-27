@@ -101,7 +101,7 @@ export const orderByName = async (reverse = false) => {
   });
 };
 
-export const orderByPriceMax = async (
+export const orderByPriceMin = async (
   reverse = false,
   tipoServico,
   barbearias
@@ -118,9 +118,9 @@ export const orderByPriceMax = async (
 
   return barbearias.sort((a, b) => {
     if (!reverse) {
-      return a.precoMax - b.precoMax;
+      return a.precoMin - b.precoMin;
     } else {
-      return b.precoMax - a.precoMax;
+      return b.precoMin - a.precoMin;
     }
   });
 };

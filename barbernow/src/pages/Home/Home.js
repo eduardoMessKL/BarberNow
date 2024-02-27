@@ -4,7 +4,7 @@ import HomeHTML from "./HomeHTML";
 import {
   getAllBarbearias,
   orderByName,
-  orderByPriceMax,
+  orderByPriceMin,
 } from "../../model/services/BarbeariaService";
 import { getMinMaxPrices } from "../../model/services/ServicoService";
 
@@ -56,8 +56,12 @@ export function Home() {
     setBarbearias(orderedBarbearias);
   };
 
-  const handleOrderByPriceMax = async (reverse = false) => {
-    const orderedBarbearias = await orderByPriceMax(reverse, tipoServico, barbearias);
+  const handleOrderByPriceMin = async (reverse = false) => {
+    const orderedBarbearias = await orderByPriceMin(
+      reverse,
+      tipoServico,
+      barbearias
+    );
     setBarbearias(orderedBarbearias);
   };
 
@@ -66,7 +70,7 @@ export function Home() {
       <HomeHTML
         barbearias={barbearias}
         onOrderByName={handleOrderByName}
-        onOrderByPriceMax={handleOrderByPriceMax}
+        onOrderByPriceMin={handleOrderByPriceMin}
         minMaxPrices={minMaxPrices}
         setTipoServico={setTipoServico}
         tipoServico={tipoServico}
