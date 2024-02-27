@@ -137,17 +137,6 @@ function CadastroHTML(props, {barbearia}) {
               />
               <label>Horário de atendimento *</label>
             </div>
-            {/*<div className="div-input-cadastro">
-              <input
-                type="text"
-                name="horarioat"
-                id="horarioat"
-                className="input-cadastro"
-                onChange={(e) => props.setHorario(e.target.value)}
-              />
-              <label>Link WhatsApp *</label>
-            </div>
-              */}
               <button
                 onClick={props.handleSignUp}
                 className="botao-cadastrar-cadastro"
