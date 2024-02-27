@@ -94,15 +94,13 @@ export function HomeHTML({
                     {barbearia.telefone}
                   </h3>
                   <h2>
-                    <h2>
-                      {minMaxPrices[barbearia.cnpj] &&
-                      minMaxPrices[barbearia.cnpj]?.minPrice !== Infinity &&
-                      minMaxPrices[barbearia.cnpj]?.maxPrice !== -Infinity
-                        ? `↓R$${minMaxPrices[barbearia.cnpj].minPrice} -  ↑R$${
-                            minMaxPrices[barbearia.cnpj].maxPrice
-                          }`
-                        : "Serviços não disponíveis"}
-                    </h2>
+                    {minMaxPrices[barbearia.cnpj] &&
+                    minMaxPrices[barbearia.cnpj]?.minPrice !== Infinity &&
+                    minMaxPrices[barbearia.cnpj]?.maxPrice !== -Infinity
+                      ? `↓R$${minMaxPrices[barbearia.cnpj].minPrice} -  ↑R$${
+                          minMaxPrices[barbearia.cnpj].maxPrice
+                        }`
+                      : "Serviços não disponíveis"}
                   </h2>
                 </div>
               </div>

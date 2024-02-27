@@ -101,9 +101,11 @@ export const orderByName = async (reverse = false) => {
   });
 };
 
-export const orderByPriceMax = async (reverse = false, tipoServico) => {
-  let barbearias = await getAllBarbearias();
-
+export const orderByPriceMax = async (
+  reverse = false,
+  tipoServico,
+  barbearias
+) => {
   const cnpjs = barbearias.map((barbearia) => barbearia.cnpj);
 
   const prices = await getMinMaxPrices(cnpjs, tipoServico);

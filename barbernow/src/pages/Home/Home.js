@@ -57,7 +57,7 @@ export function Home() {
   };
 
   const handleOrderByPriceMax = async (reverse = false) => {
-    const orderedBarbearias = await orderByPriceMax(reverse, tipoServico);
+    const orderedBarbearias = await orderByPriceMax(reverse, tipoServico, barbearias);
     setBarbearias(orderedBarbearias);
   };
 
