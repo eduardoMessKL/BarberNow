@@ -1,9 +1,7 @@
 import React from "react";
 import arrow from "../../../assets/Arrow Black.png";
 import logoimg from "../../../assets/Logo/LogoBranca.png";
-import userIcon from "../../../assets/User Icon.png";
 import { Link } from "react-router-dom";
-import FotoCorte from "../../../assets/CorteCabelo.png";
 
 function EditarServicosHTML({
   servico,
@@ -27,9 +25,7 @@ function EditarServicosHTML({
             className="imglogo-header"
             alt="logoimg-header"
           ></img>
-          <Link to={"/"}>
-            <h1 className="logotxt-header">BarberNow</h1>
-          </Link>
+          <h1 className="logotxt-header">BarberNow</h1>
         </div>
         <div className="headerR">
           <Link to={`/perfil/${barbearia.cnpj}`} className="botao-link">
