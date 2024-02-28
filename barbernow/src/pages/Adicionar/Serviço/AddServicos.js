@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createServico } from "../../../model/services/ServicoService";
 import AddServicosHTML from "./AddServicosHTML";
 import "./AddServicos.css";
+import { getBarbearia } from "../../../model/services/BarbeariaService";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function AddServicos() {
+  const [barbearia, setBarbearia] = useState({});
   const [nomeCorte, setNomeCorte] = useState("");
   const [descricaoCorte, setDescricaoCorte] = useState("");
   const [preco, setPreco] = useState("");
@@ -12,8 +14,19 @@ export function AddServicos() {
   const [tipoServico, setTipoServico] = useState("");
   const [imageFile, setImageFile] = useState(null); // Novo estado para o arquivo de imagem
   const navigate = useNavigate();
-  const params = useParams();
-  const cnpj = params.cnpj;
+  const { cnpj } = useParams();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const barbeariaData = await getBarbearia(cnpj);
+        setBarbearia(barbeariaData);
+      } catch (error) {
+        console.error("Erro ao buscar dados: ", error);
+      }
+    }
+    fetchData();
+  }, [cnpj]);
 
   const adicionarServico = async () => {
     try {
@@ -45,6 +58,7 @@ export function AddServicos() {
         setTipoServico={setTipoServico}
         setImageFile={setImageFile} // Agora passamos essa prop também
         adicionarServico={adicionarServico}
+        barbearia={barbearia}
       />
     </div>
   );

@@ -16,12 +16,10 @@ function AddServicosHTML(props) {
             className="imglogo-header"
             alt="logoimg-header"
           ></img>
-          <Link to={"/"}>
-            <h1 className="logotxt-header">BarberNow</h1>
-          </Link>
+          <h1 className="logotxt-header">BarberNow</h1>
         </div>
         <div className="headerR">
-          <Link to="/perfil" className="botao-link">
+          <Link to={`/perfil/${props.barbearia.cnpj}`} className="botao-link">
             <button className="botao-header">PERFIL</button>
           </Link>
           <Link to="/login" className="botao-link">
@@ -33,7 +31,7 @@ function AddServicosHTML(props) {
         <section className="card-addServ">
           <div className="card-addServ-L">
             <button className="botao-arrow-cadastro">
-              <Link to="/perfil">
+              <Link to={`/perfil/${props.barbearia.cnpj}`}>
                 <img src={arrow} className="arrow" alt="arrow"></img>
               </Link>
             </button>
