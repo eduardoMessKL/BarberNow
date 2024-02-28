@@ -3,6 +3,7 @@ import {
   getServicosByBarbearia,
   updateServico,
   getServico,
+  deleteServico,
 } from "../../../model/services/ServicoService";
 import { getBarbearia } from "../../../model/services/BarbeariaService";
 import { useParams } from "react-router-dom";
@@ -52,13 +53,33 @@ export function ServicosE() {
     try {
       // Use formValues para obter os valores atualizados do serviço
       await updateServico(cnpj, servicoID, formValues);
-      console.log("Serviço atualizado com sucesso!");
+      alert("Serviço atualizado com sucesso!");
 
       // Recarrega os serviços após a atualização para refletir as mudanças no UI
       const updatedServicos = await getServicosByBarbearia(cnpj);
       setServico(updatedServicos);
     } catch (error) {
       console.error("Erro ao atualizar o serviço: ", error);
+    }
+  };
+
+  const handleDelete = async () => {
+    // Exibe uma caixa de diálogo de confirmação
+    const confirmation = window.confirm(
+      "Você tem certeza de que deseja excluir este serviço? Esta ação não pode ser desfeita."
+    );
+
+    // Se o usuário clicar em OK (true), prossegue com a exclusão
+    if (confirmation) {
+      try {
+        await deleteServico(barbearia.cnpj, servico.id);
+        alert("Serviço excluído com sucesso!");
+        // Redireciona para a página de perfil após a exclusão
+        window.location.href = `/perfil/${barbearia.cnpj}`;
+      } catch (error) {
+        console.error("Erro ao excluir o serviço: ", error);
+        alert("Erro ao excluir o serviço.");
+      }
     }
   };
 
@@ -70,6 +91,7 @@ export function ServicosE() {
       setFormValues={setFormValues}
       handleUpdate={handleUpdate}
       handleChange={handleChange}
+      handleDelete={handleDelete}
     />
   );
 }

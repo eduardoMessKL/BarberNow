@@ -78,7 +78,9 @@ export async function updateServico(cnpj, servicoID, updateData) {
 
 export async function deleteServico(cnpj, servicoID) {
   try {
-    await deleteDoc(doc(db, "barbearias", cnpj, "servicos", servicoID));
+    const docRef = doc(db, "barbearias", cnpj, "servicos", servicoID);
+    await deleteDoc(docRef);
+    console.log("Serviço excluído com sucesso!");
   } catch (e) {
     console.error("Error deleting document: ", e);
   }
