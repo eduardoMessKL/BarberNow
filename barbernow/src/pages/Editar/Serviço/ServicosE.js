@@ -6,7 +6,7 @@ import {
   deleteServico,
 } from "../../../model/services/ServicoService";
 import { getBarbearia } from "../../../model/services/BarbeariaService";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import EditarServicosHTML from "./ServicosHTMLE"; // Ajuste para importar o componente correto
 import "./ServicosE.css";
 
@@ -15,6 +15,7 @@ export function ServicosE() {
   const [barbearia, setBarbearia] = useState({});
   const [formValues, setFormValues] = useState({});
   const { cnpj, servicoID } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -25,7 +26,6 @@ export function ServicosE() {
         setServico(servicoData);
         setBarbearia(barbeariaData);
 
-        // Inicializa o estado 'formValues' com os valores do serviço
         setFormValues({
           nome: servicoData.nome,
           descricao: servicoData.descricao,
@@ -51,11 +51,9 @@ export function ServicosE() {
 
   const handleUpdate = async () => {
     try {
-      // Use formValues para obter os valores atualizados do serviço
       await updateServico(cnpj, servicoID, formValues);
       alert("Serviço atualizado com sucesso!");
-
-      // Recarrega os serviços após a atualização para refletir as mudanças no UI
+      navigate(`/perfil/${cnpj}`);
       const updatedServicos = await getServicosByBarbearia(cnpj);
       setServico(updatedServicos);
     } catch (error) {
@@ -72,10 +70,9 @@ export function ServicosE() {
     // Se o usuário clicar em OK (true), prossegue com a exclusão
     if (confirmation) {
       try {
-        await deleteServico(barbearia.cnpj, servico.id);
+        await deleteServico(cnpj, servicoID);
         alert("Serviço excluído com sucesso!");
-        // Redireciona para a página de perfil após a exclusão
-        window.location.href = `/perfil/${barbearia.cnpj}`;
+        navigate(`/perfil/${cnpj}`);
       } catch (error) {
         console.error("Erro ao excluir o serviço: ", error);
         alert("Erro ao excluir o serviço.");

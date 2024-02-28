@@ -112,14 +112,13 @@ function EditarServicosHTML({
                 </section>
               </div>
               <div className="botaos">
-                <Link to={`/perfil/${barbearia.cnpj}`}>
-                  <button
-                    className="botao-adicionar"
-                    onClick={() => handleUpdate(servico.id)}
-                  >
-                    <h1>EDITAR CORTE</h1>
-                  </button>
-                </Link>
+                <button
+                  className="botao-adicionar"
+                  onClick={() => handleUpdate(servico.id)}
+                >
+                  <h1>EDITAR CORTE</h1>
+                </button>
+
                 <Link to={`/perfil/${barbearia.cnpj}`}>
                   <button className="botao-adicionar">
                     <h1>CANCELAR EDIÇÃO</h1>
