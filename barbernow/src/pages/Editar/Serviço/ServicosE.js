@@ -53,7 +53,7 @@ export function ServicosE() {
     try {
       await updateServico(cnpj, servicoID, formValues);
       alert("Serviço atualizado com sucesso!");
-      navigate(`/perfil/${cnpj}`);
+      navigate(`/consultar-servico/${cnpj}`);
       const updatedServicos = await getServicosByBarbearia(cnpj);
       setServico(updatedServicos);
     } catch (error) {
@@ -72,7 +72,7 @@ export function ServicosE() {
       try {
         await deleteServico(cnpj, servicoID);
         alert("Serviço excluído com sucesso!");
-        navigate(`/perfil/${cnpj}`);
+        navigate(`/consultar-servico/${cnpj}`);
       } catch (error) {
         console.error("Erro ao excluir o serviço: ", error);
         alert("Erro ao excluir o serviço.");

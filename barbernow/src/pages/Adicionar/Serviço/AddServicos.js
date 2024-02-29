@@ -41,7 +41,7 @@ export function AddServicos() {
       await createServico(cnpj, servicoData, imageFile); // Assumindo que createServico também aceita o imageFile
 
       alert("Serviço adicionado com sucesso!");
-      navigate(`/perfil/${cnpj}`); // Navega para o perfil após adicionar com sucesso
+      navigate(`/consultar-servico/${cnpj}`); // Navega para o perfil após adicionar com sucesso
     } catch (error) {
       console.error("Erro ao adicionar serviço:", error.message);
       alert("Erro ao adicionar serviço: " + error.message);
