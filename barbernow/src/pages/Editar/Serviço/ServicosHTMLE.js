@@ -1,27 +1,16 @@
 import React from "react";
 import arrow from "../../../assets/Arrow Black.png";
 import logoimg from "../../../assets/Logo/LogoBranca.png";
-import userIcon from "../../../assets/User Icon.png";
 import { Link } from "react-router-dom";
-import FotoCorte from "../../../assets/CorteCabelo.png";
 
 function EditarServicosHTML({
   servico,
   formValues,
-  setFormValues,
   handleUpdate,
+  handleChange,
+  handleDelete,
   barbearia,
 }) {
-  const handleChange = (field, value) => {  
-    setFormValues((prev) => ({
-      ...prev,
-      [servico.id]: {
-        ...prev[servico.id],
-        [field]: value,
-      },
-    }));
-  };
-
   if (!servico) {
     return <div>Carregando...</div>;
   }
@@ -36,9 +25,7 @@ function EditarServicosHTML({
             className="imglogo-header"
             alt="logoimg-header"
           ></img>
-          <Link to={"/"}>
-            <h1 className="logotxt-header">BarberNow</h1>
-          </Link>
+          <h1 className="logotxt-header">BarberNow</h1>
         </div>
         <div className="headerR">
           <Link to={`/perfil/${barbearia.cnpj}`} className="botao-link">
@@ -50,99 +37,96 @@ function EditarServicosHTML({
         </div>
       </header>
       <div className="div-inf-addServ">
-        
-          <section className="card-addServ" key={servico.id}>
-            <div className="card-addServ-L">
-              <button className="botao-arrow-cadastro">
-                <Link to={`/consultar-servico/${barbearia.cnpj}`}>
-                  <img src={arrow} className="arrow" alt="arrow"></img>
-                </Link>
-              </button>
-            </div>
-            <div className="card-addServ-M">
-              <img src={servico.fotoURL} alt="servico-img"></img>
-              <label>Altere a foto do corte</label>
-            </div>
-            <div className="card-addServ-R">
-              <div className="div-input-cadastro">
-                <input
-                  value={formValues[servico.id]?.nome}
-                  onChange={(e) =>
-                    handleChange(servico.id, "nome", e.target.value)
-                  }
-                  type="text"
-                  name="nome"
-                  id="nome"
-                  className="input-cadastro"
-                  placeholder={servico.nome}
-                />
-                <label>Nome do corte *</label>
-                <input
-                  value={formValues[servico.id]?.descricao}
-                  onChange={(e) =>
-                    handleChange(servico.id, "descricao", e.target.value)
-                  }
-                  type="text"
-                  name="descricao"
-                  id="descricao"
-                  className="input-cadastro"
-                  placeholder={servico.descricao}
-                />
-                <label>Breve descrição sobre o corte *</label>
-                <input
-                  value={formValues[servico.id]?.preco}
-                  onChange={(e) =>
-                    handleChange(servico.id, "preco", e.target.value)
-                  }
-                  type="text"
-                  name="preco"
-                  id="preco"
-                  className="input-cadastro"
-                  placeholder={servico.preco}
-                />
-                <label>Preço *</label>
-                <div>
-                  <section>
-                    <input
-                      value={formValues[servico.id]?.duracao}
-                      onChange={(e) =>
-                        handleChange(servico.id, "duracao", e.target.value)
-                      }
-                      type="text"
-                      name="duracao"
-                      id="duracao"
-                      className="input-cadastro"
-                      placeholder={servico.duracao}
-                    />
-                    <label>Duração *</label>
-                  </section>
-                  <section>
-                    <input
-                      value={formValues[servico.id]?.tipo}
-                      onChange={(e) =>
-                        handleChange(servico.id, "tipo", e.target.value)
-                      }
-                      type="text"
-                      name="tipo"
-                      id="tipo"
-                      className="input-cadastro"
-                      placeholder={servico.tipo}
-                    />
-                    <label>Tipo de serviço*</label>
-                  </section>
-                </div>
+        <section className="card-addServ" key={servico.id}>
+          <div className="card-addServ-L">
+            <button className="botao-arrow-cadastro">
+              <Link to={`/consultar-servico/${barbearia.cnpj}`}>
+                <img src={arrow} className="arrow" alt="arrow"></img>
+              </Link>
+            </button>
+          </div>
+          <div className="card-addServ-M">
+            <img src={servico.fotoURL} alt="servico-img"></img>
+            <label>Altere a foto do corte</label>
+          </div>
+          <div className="card-addServ-R">
+            <div className="div-input-cadastro">
+              <input
+                value={formValues.nome} // Ajuste aqui para usar formValues.nome
+                onChange={(e) => handleChange("nome", e.target.value)}
+                type="text"
+                name="nome"
+                id="nome"
+                className="input-cadastro"
+                placeholder="Nome do corte"
+              />
+              <label>Nome do corte *</label>
+              <input
+                value={formValues.descricao} // Ajuste aqui para usar formValues.descricao
+                onChange={(e) => handleChange("descricao", e.target.value)}
+                type="text"
+                name="descricao"
+                id="descricao"
+                className="input-cadastro"
+                placeholder="Breve descrição sobre o corte"
+              />
+              <label>Breve descrição sobre o corte *</label>
+              <input
+                value={formValues.preco} // Ajuste aqui para usar formValues.preco
+                onChange={(e) => handleChange("preco", e.target.value)}
+                type="text"
+                name="preco"
+                id="preco"
+                className="input-cadastro"
+                placeholder="Preço"
+              />
+              <label>Preço *</label>
+              <div>
+                <section>
+                  <input
+                    value={formValues.duracao} // Ajuste aqui para usar formValues.duracao
+                    onChange={(e) => handleChange("duracao", e.target.value)}
+                    type="text"
+                    name="duracao"
+                    id="duracao"
+                    className="input-cadastro"
+                    placeholder="Duração"
+                  />
+                  <label>Duração *</label>
+                </section>
+                <section>
+                  <input
+                    value={formValues.tipo} // Ajuste aqui para usar formValues.tipo
+                    onChange={(e) => handleChange("tipo", e.target.value)}
+                    type="text"
+                    name="tipo"
+                    id="tipo"
+                    className="input-cadastro"
+                    placeholder="Tipo de serviço"
+                  />
+                  <label>Tipo de serviço*</label>
+                </section>
+              </div>
+              <div className="botaos">
+                <button
+                  className="botao-adicionar"
+                  onClick={() => handleUpdate(servico.id)}
+                >
+                  <h1>EDITAR CORTE</h1>
+                </button>
+
                 <Link to={`/perfil/${barbearia.cnpj}`}>
-                  <button
-                    className="botao-adicionar"
-                    onClick={() => handleUpdate(servico.id)}
-                  >
-                    <h1>EDITAR CORTE</h1>
+                  <button className="botao-adicionar">
+                    <h1>CANCELAR EDIÇÃO</h1>
                   </button>
                 </Link>
+                <button className="botao-adicionar" onClick={handleDelete}>
+                  <h1>EXCLUIR SERVIÇO</h1>
+                </button>
               </div>
             </div>
-          </section>
-    
+          </div>
+        </section>
       </div>
     </div>
   );

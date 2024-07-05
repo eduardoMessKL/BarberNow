@@ -1,11 +1,9 @@
 import React from "react";
 import arrow from "../../assets/Arrow Black.png";
 import logoimg from "../../assets/Logo/LogoBranca.png";
-import CorteCabelo from "../../assets/CorteCabelo.png";
-import Pencil from "../../assets/Elements/Pencil.png";
 import Wpp from "../../assets/Elements/WhatsApp.png";
-
 import { Link } from "react-router-dom";
+import Home from "../../assets/Elements/casa.png";
 
 function ServicosHTML({ servicos, barbearia }) {
   return (
@@ -26,11 +24,6 @@ function ServicosHTML({ servicos, barbearia }) {
               INÍCIO
             </Link>
           </button>
-          <button className="botao-header">
-            <Link to={`/perfil/${barbearia.cnpj}`} className="botao-link">
-              PERFIL
-            </Link>
-          </button>
         </div>
       </header>
       <div className="div-inf-Servicos">
@@ -45,17 +38,36 @@ function ServicosHTML({ servicos, barbearia }) {
           </div>
           <div className="dados-barbearia">
             <div className="dados-barbeariaL">
-              <img src={barbearia.fotoURL}></img>
-              <button className="entrar-contato">
-                ENTRAR EM CONTATO
-                <img src={Wpp} className="wpp"></img>
-              </button>
+              <img src={barbearia.fotoURL} className="img-logo"></img>
+              <Link
+                to={`https://wa.me/55${barbearia.telefone}?text=Ol%C3%A1%21%20Quero%20agendar%20um%20corte%21`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="entrar-contato">
+                  ENTRAR EM CONTATO
+                  <img src={Wpp} className="wpp"></img>
+                </button>
+              </Link>
+              <Link
+                to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  barbearia.nome + " " + barbearia.endereco
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="entrar-contato">
+                  LOCALIZAR
+                  <img src={Home}></img>
+                </button>
+              </Link>
             </div>
             <div className="dados-barbeariaR">
               <h1>{barbearia.nome}</h1>
               <h3>{barbearia.endereco}</h3>
               <h3>{barbearia.telefone}</h3>
               <h3>{barbearia.horario}</h3>
+              <br />
             </div>
           </div>
         </div>
@@ -75,9 +87,7 @@ function ServicosHTML({ servicos, barbearia }) {
                 <h2>R$ {servico.preco}</h2>
                 <h3>{servico.duracao}</h3>
               </div>
-              <div className="div-pincel">
-                
-              </div>
+              <div className="div-pincel"></div>
             </div>
           ))}
         </div>

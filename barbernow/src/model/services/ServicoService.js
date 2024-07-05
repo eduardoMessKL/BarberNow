@@ -6,7 +6,6 @@ import {
   updateDoc,
   deleteDoc,
   collection,
-  addDoc,
   getDocs,
 } from "firebase/firestore";
 import { app } from "../../firebase/firebaseConfig";
@@ -22,7 +21,6 @@ export async function createServico(cnpj, servicoData, file) {
     const newDocRef = doc(collection(db, "barbearias", cnpj, "servicos"));
     servicoData.servicoID = newDocRef.id; // Aqui estamos pegando o ID gerado e usando-o em nossos dados.
 
-    // Crie uma instância da classe Servico
     const servico = new Servico(
       servicoData.servicoID,
       servicoData.nome,
@@ -80,7 +78,9 @@ export async function updateServico(cnpj, servicoID, updateData) {
 
 export async function deleteServico(cnpj, servicoID) {
   try {
-    await deleteDoc(doc(db, "barbearias", cnpj, "servicos", servicoID));
+    const docRef = doc(db, "barbearias", cnpj, "servicos", servicoID);
+    await deleteDoc(docRef);
+    console.log("Serviço excluído com sucesso!");
   } catch (e) {
     console.error("Error deleting document: ", e);
   }
@@ -99,21 +99,53 @@ export async function getAllServicos(cnpj) {
 
 export const getServicosByBarbearia = async (cnpj) => {
   try {
+    const servicosSnapshot = await getDocs(
+      collection(db, "barbearias", cnpj, "servicos")
+    );
+
+    const servicos = [];
+    servicosSnapshot.forEach((doc) => {
+      servicos.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+
+    return servicos;
+  } catch (error) {
+    console.error("Erro ao buscar serviços: ", error);
+    throw error;
+  }
+};
+
+export async function getMinMaxPrices(cnpjs, tipoServico) {
+  const minMaxPrices = {};
+
+  for (const cnpj of cnpjs) {
+    try {
       const servicosSnapshot = await getDocs(
         collection(db, "barbearias", cnpj, "servicos")
       );
-      
-      const servicos = [];
-      servicosSnapshot.forEach(doc => {
-          servicos.push({
-              id: doc.id,
-              ...doc.data()
-          });
+
+      let minPrice = Infinity;
+      let maxPrice = -Infinity;
+
+      servicosSnapshot.forEach((doc) => {
+        const servico = doc.data();
+        if (servico.tipo === tipoServico) {
+          minPrice = Math.min(minPrice, servico.preco);
+          maxPrice = Math.max(maxPrice, servico.preco);
+        }
       });
 
-      return servicos;
-  } catch (error) {
-      console.error("Erro ao buscar serviços: ", error);
-      throw error;
+      minMaxPrices[cnpj] = { minPrice, maxPrice };
+    } catch (error) {
+      console.error(
+        `Erro ao buscar preços mínimos e máximos para CNPJ ${cnpj}: `,
+        error
+      );
+    }
   }
+
+  return minMaxPrices;
 }

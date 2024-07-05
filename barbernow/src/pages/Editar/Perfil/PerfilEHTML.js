@@ -112,7 +112,7 @@ export function PerfilEHTML({ barbearia, handleChange, handleUpdate }) {
               </button>
             </Link>
             <Link to={`/perfil/${barbearia.cnpj}`}>
-              <button className="botao-editar-sair">
+              <button className="botao-editar-concluir">
                 <h1>CANCELAR EDIÇÃO</h1>
               </button>
             </Link>

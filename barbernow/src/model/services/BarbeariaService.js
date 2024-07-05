@@ -1,19 +1,16 @@
 import {
-  getFirestore,
   doc,
   setDoc,
   getDoc,
   updateDoc,
   deleteDoc,
-  query,
-  where,
   getDocs,
   collection,
 } from "firebase/firestore";
-import { app } from "../../firebase/firebaseConfig";
 import { uploadImageAndGetURL } from "./firestoreService";
 import { Barbearia } from "../entities/Barbearia";
 import { db } from "../../firebase/firebaseConfig";
+import { getMinMaxPrices } from "./ServicoService";
 
 //funções CRUD Barbearia
 export async function createBarbearia(barbeariaData, file) {
@@ -104,13 +101,37 @@ export const orderByName = async (reverse = false) => {
   });
 };
 
-export const orderByPriceMax = async (reverse = false) => {
-  let barbearias = await getAllBarbearias();
-  return barbearias.sort((a, b) => {
-    if (!reverse) {
-      return parseFloat(a.precoMax) - parseFloat(b.precoMax);
+export const orderByPriceMin = async (
+  reverse = false,
+  tipoServico,
+  barbearias
+) => {
+  const cnpjs = barbearias.map((barbearia) => barbearia.cnpj);
+  const prices = await getMinMaxPrices(cnpjs, tipoServico);
+
+  // Atualiza as barbearias com os preços mínimos e máximos
+  const updatedBarbearias = barbearias.map((barbearia) => ({
+    ...barbearia,
+    precoMin:
+      prices[barbearia.cnpj]?.minPrice || (reverse ? Infinity : -Infinity),
+    precoMax:
+      prices[barbearia.cnpj]?.maxPrice || (reverse ? -Infinity : Infinity),
+  }));
+
+  // Ordena as barbearias com base nos preços mínimos e máximos
+  return updatedBarbearias.sort((a, b) => {
+    // Se ambas as barbearias não têm o serviço, coloca por último
+    if (a.precoMin === Infinity && b.precoMin === Infinity) {
+      return 0;
+    } else if (a.precoMin === Infinity) {
+      // Se a barbearia A não tem o serviço, coloca por último
+      return 1;
+    } else if (b.precoMin === Infinity) {
+      // Se a barbearia B não tem o serviço, coloca por último
+      return -1;
     } else {
-      return parseFloat(b.precoMax) - parseFloat(a.precoMax);
+      // Se ambas as barbearias têm o serviço, compara os preços
+      return reverse ? b.precoMin - a.precoMin : a.precoMin - b.precoMin;
     }
   });
 };

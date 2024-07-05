@@ -67,6 +67,7 @@ export function Cadastro() {
           };
           //depois de criar o usuario/barbearia, adiciona no banco
           await createBarbearia(barbeariaData, imageFile); // Passa os dados e o arquivo para a função //
+          alert("Perfil criado com sucesso!");
           navigate(`/perfil/${cnpj}`);
         })
         .catch((error) => {

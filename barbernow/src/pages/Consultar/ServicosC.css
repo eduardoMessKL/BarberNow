@@ -1,125 +1,156 @@
-.div-inf-Servicos{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.div-inf-Servicos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.card-login-arrow{
-    height: 2rem;
+.card-login-arrow {
+  height: 2rem;
 }
 
-.info-barbearia{
-    width: 65%;
-    border-radius: 0.3rem;
-    background: linear-gradient(180deg, rgba(255, 254, 252, 0.65) 0.02%, rgba(251, 251, 251, 0.65) 128.22%), linear-gradient(181deg, rgba(255, 255, 255, 0.65) -39.57%, rgba(255, 255, 255, 0.00) 99.45%);
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
-    filter: blur(0px);
-    backdrop-filter: blur(26px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.info-barbearia {
+  width: 65%;
+  border-radius: 0.3rem;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 254, 252, 0.65) 0.02%,
+      rgba(251, 251, 251, 0.65) 128.22%
+    ),
+    linear-gradient(
+      181deg,
+      rgba(255, 255, 255, 0.65) -39.57%,
+      rgba(255, 255, 255, 0) 99.45%
+    );
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+  filter: blur(0px);
+  backdrop-filter: blur(26px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.dados-barbearia{
-    display: flex;
-    align-items: center;
+.dados-barbearia {
+  display: flex;
+  align-items: center;
 }
 
-.dados-barbeariaR{
-    margin-left: 2.5rem;
-    margin-bottom: 2.5rem;
+.dados-barbeariaR {
+  margin-left: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
-.dados-barbeariaR h3{
-    font-weight: 100;
-    font-size: 1.7rem;
+.dados-barbeariaR h3 {
+  font-weight: 100;
+  font-size: 1.7rem;
 }
 
-.dados-barbeariaR h1{
-    font-size: 3rem;
-    margin-bottom: 1rem;
+.dados-barbeariaR h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
-.dados-barbeariaR h1{
+.servicos-barbearia {
+  width: 65%;
+  display: grid;
+  grid-gap: 2%;
+  margin-top: 1%;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
 }
 
-.servicos-barbearia{
-    width: 65%;
-    display: grid;
-    grid-gap: 2%;
-    margin-top: 1%; 
-    grid-template-columns: repeat(2, minmax(250px, 1fr));
+.servicos-barbearia a {
+  text-decoration: none;
+  color: black;
 }
 
-.servicos-barbearia a{
-    text-decoration: none;
-    color: black;
+.card-servico:hover {
+  transition: 0.5s;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 254, 252, 0.65) 0.02%,
+      rgba(251, 251, 251, 0.887) 128.22%
+    ),
+    linear-gradient(
+      181deg,
+      rgba(255, 255, 255, 0.811) -39.57%,
+      rgba(255, 255, 255, 0) 99.45%
+    );
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.card-servico:hover{
-    transition: 0.5s;
-    background: linear-gradient(180deg, rgba(255, 254, 252, 0.65) 0.02%, rgba(251, 251, 251, 0.887) 128.22%), linear-gradient(181deg, rgba(255, 255, 255, 0.811) -39.57%, rgba(255, 255, 255, 0.00) 99.45%);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-
+.card-servico {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 0.2rem;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 254, 252, 0.65) 0.02%,
+      rgba(251, 251, 251, 0.65) 128.22%
+    ),
+    linear-gradient(
+      181deg,
+      rgba(255, 255, 255, 0.65) -39.57%,
+      rgba(255, 255, 255, 0) 99.45%
+    );
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+  filter: blur(0px);
+  backdrop-filter: blur(26px);
 }
 
-.card-servico{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    border-radius: 0.2rem;
-    background: linear-gradient(180deg, rgba(255, 254, 252, 0.65) 0.02%, rgba(251, 251, 251, 0.65) 128.22%), linear-gradient(181deg, rgba(255, 255, 255, 0.65) -39.57%, rgba(255, 255, 255, 0.00) 99.45%);
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
-    filter: blur(0px);
-    backdrop-filter: blur(26px);
+.card-servico h3 {
+  font-weight: 100;
 }
 
-.card-servico h3{
-    font-weight: 100;
+.card-servicoR {
+  margin-left: 8%;
 }
 
-.card-servicoR{
-    margin-left: 8%;
+.CorteCabelo {
+  margin: 10%;
+  height: 9rem;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 }
 
-.CorteCabelo{
-    margin: 10%;
-    height: 9rem;
-    border-radius: 3px;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+.pincel {
+  height: 2rem;
 }
 
-.pincel{
-    height: 2rem;
+.dados-barbeariaL {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.dados-barbeariaL{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.entrar-contato {
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  background: #f5bd1f;
+  box-shadow: 0px 0px 10px 0px #0000005b;
+  width: 20vw;
+  justify-content: center;
 }
 
-.entrar-contato{
-    border-radius: 5px;
-    padding: 0.5rem;
-    font-weight: bold;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    background: #F5BD1F;
-    box-shadow: 0px 0px 10px 0px #0000005b;
+.entrar-contato:hover {
+  transition: 0.5s;
+  background: #fff823;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 0px #f5bd1f;
 }
 
-.entrar-contato:hover{
-    transition: 0.5s;
-    background: #fff823;
-    cursor: pointer;
-    box-shadow: 0px 0px 10px 0px #F5BD1F;
+.entrar-contato img {
+  margin-left: 1rem;
+  height: 1.3em;
+  border-radius: 0px;
 }
 
-.entrar-contato img{
-    margin-left: 1rem;
-    height: 2rem;
+.entrar-contato a {
+  text-decoration: none;
+  color: inherit; 
 }
